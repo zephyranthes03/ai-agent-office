@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "id": "opencode",
+  "name": "OpenCode",
+  "versions_tested": [
+    "2.2.6"
+  ],
+  "process_names": [
+    "opencode.exe"
+  ],
+  "strategies": [
+    {
+      "kind": "hook",
+      "provides": [
+        "state",
+        "identity"
+      ],
+      "note": "Primary. A plugin file in ~/.config/opencode/plugins (XDG_CONFIG_HOME honoured) subscribes to the named event types only, so prompts, replies and commands never reach it; opencode.json is not edited and the server's password is not read."
+    },
+    {
+      "kind": "local_db",
+      "provides": [
+        "schedule"
+      ],
+      "reads": [
+        "~/.local/share/opencode/opencode.db"
+      ],
+      "max_read_bytes": 1048576,
+      "allowlisted_keys": [
+        "schedule.id",
+        "schedule.session_id",
+        "schedule.name",
+        "schedule.when",
+        "schedule.tz",
+        "schedule.status",
+        "schedule.next_due_at",
+        "schedule.last_fired_at",
+        "schedule.last_outcome",
+        "schedule.retry_at"
+      ],
+      "note": "Native schedule metadata only. XDG_DATA_HOME and OPENCODE_DB honored. Never action, check or state. Admission is not execution."
+    }
+  ],
+  "hook_events": [
+    "session.created",
+    "session.deleted",
+    "session.execution.started",
+    "session.execution.succeeded",
+    "session.execution.failed",
+    "session.execution.interrupted",
+    "session.tool.input.started",
+    "session.tool.success",
+    "session.tool.failed",
+    "permission.asked",
+    "permission.replied"
+  ],
+  "tool_classes": {},
+  "open": [],
+  "controls": [],
+  "schedule": [
+    "list"
+  ],
+  "service": {
+    "controls": [
+      "start",
+      "stop",
+      "restart"
+    ],
+    "command": "opencode",
+    "process_names": [
+      "opencode.exe"
+    ],
+    "identify": {
+      "by": "listener"
+    },
+    "status": {
+      "args": [
+        "service",
+        "status"
+      ],
+      "format": "opencode_text"
+    },
+    "start": {
+      "args": [
+        "service",
+        "start"
+      ]
+    },
+    "stop": {
+      "args": [
+        "service",
+        "stop"
+      ]
+    },
+    "restart": {
+      "args": [
+        "service",
+        "restart"
+      ]
+    },
+    "timeout_s": 30,
+    "settle_s": 15,
+    "verified": true
+  },
+  "permissions": {
+    "read_paths": [
+      "~/.local/share/opencode/opencode.db"
+    ],
+    "write_paths": [
+      "~/.config/opencode/plugins/agent-office.js"
+    ],
+    "network": [],
+    "spawn": [
+      "opencode"
+    ]
+  }
+}

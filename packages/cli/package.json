@@ -1,0 +1,25 @@
+{
+  "name": "@agent-office/cli",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Command-line entry points: the hook program the agents run, the headless daemon, and the hook installer.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./launch": "./src/ui.ts",
+    "./transport": "./src/transport.ts",
+    "./viewer": "./src/viewer.ts"
+  },
+  "bin": {
+    "agent-office-hook": "./bin/agent-office-hook.mjs",
+    "agent-office": "./bin/agent-office.mjs"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "dependencies": {
+    "@agent-office/adapters": "0.0.0",
+    "@agent-office/core": "0.0.0",
+    "@agent-office/daemon": "0.0.0"
+  }
+}

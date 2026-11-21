@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "default-cat",
+  "name": "Cat colleague",
+  "version": "0.1.0",
+  "authors": ["agent-office contributors"],
+  "license": "CC-BY-4.0",
+  "species": "cat",
+  "sheet": "cat.png",
+  "aseprite_json": "cat.json",
+  "frame_size": { "w": 64, "h": 64 },
+  "anchor": { "x": 32, "y": 60 },
+  "label_anchor": { "x": 32, "y": 4 },
+  "animations": {
+    "idle": "idle",
+    "walk": "walk",
+    "work": { "tag": "type", "fps": 8, "loop": true },
+    "wait_dependency": "look_door",
+    "wait_user": "raise_hand",
+    "error": { "tag": "error", "fps": 8, "loop": false, "hold_last_frame": true },
+    "done": { "tag": "cheer", "fps": 10, "loop": false },
+    "unknown": { "tag": "sleep", "fps": 2 },
+    "paused": { "tag": "paused", "fps": 1 },
+    "cancelled": { "tag": "cancelled", "fps": 6, "loop": false, "hold_last_frame": true },
+    "drink_coffee": { "tag": "drink_coffee", "fps": 6, "loop": false },
+    "read_book": { "tag": "read_book", "fps": 5, "loop": true },
+    "stretch": { "tag": "stretch", "fps": 6, "loop": false }
+  },
+  "palettes": [
+    { "id": "a", "name": "plum", "swap": {} },
+    { "id": "b", "name": "honey", "swap": { "#725368": "#c39354", "#c98e6b": "#6b8d84", "#39485a": "#4b4256" } },
+    { "id": "c", "name": "teal", "swap": { "#725368": "#4e6d78", "#c98e6b": "#ae819b", "#39485a": "#404d58" } }
+  ],
+  "props": [
+    { "id": "glasses", "image": "props/glasses.png", "anchor": { "x": 32, "y": 17 }, "for": ["reviewer"] },
+    { "id": "badge", "image": "props/badge.png", "anchor": { "x": 30, "y": 36 }, "for": ["claude-desktop"] }
+  ],
+  "original_work": true
+}

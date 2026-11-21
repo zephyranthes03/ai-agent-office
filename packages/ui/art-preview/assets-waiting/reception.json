@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "purpose": "Private waiting-area furniture/source coordinates, not room pack schema",
+  "image": "./assets-waiting/reception-v2.png",
+  "size": [
+    1536,
+    1024
+  ],
+  "frames": {
+    "bench": {
+      "x": 45,
+      "y": 487,
+      "width": 1075,
+      "height": 409
+    },
+    "coat-rack": {
+      "x": 1152,
+      "y": 10,
+      "width": 346,
+      "height": 982
+    }
+  },
+  "benchContacts": [
+    {
+      "x": 340,
+      "y": 665
+    },
+    {
+      "x": 824,
+      "y": 665
+    }
+  ],
+  "sourceSHA256": "7aae50d2398ace47194fc68ebc0bc658713e478ad2a6303b83c5b06354dfbda8",
+  "cropMethod": "Measured alpha>=128 object bounds plus8source pixels. Native PNG and alpha unchanged. Seat points lie on the visible cushion and are separate from floor approach points.",
+  "notes": [
+    "Raw generated interiors mostly alpha253/254; no alpha normalization.",
+    "v1 kept as earlier camera/proportion candidate; v2 low near-frontal bench selected.",
+    "Coat rack only at core entrance; overflow adds benches."
+  ]
+}

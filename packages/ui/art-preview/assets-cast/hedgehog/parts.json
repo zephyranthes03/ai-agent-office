@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "species": "hedgehog",
+  "image": "atlas-v1.png",
+  "mask": "garment-mask-v1.png",
+  "width": 1254,
+  "height": 1254,
+  "coordinateSystem": "source pixels",
+  "cropPolicy": "Four-connected components with alpha>=16 and >1000 pixels. Each measured solidBounds is expanded by 8 source pixels for rect, clamped to the image. Source PNG is unchanged. Components were mapped to visually inspected 3x3 parts.",
+  "facing": "right",
+  "frames": {
+    "head": {
+      "rect": {
+        "x": 32,
+        "y": 99,
+        "width": 371,
+        "height": 323
+      },
+      "solidBounds": {
+        "x": 40,
+        "y": 107,
+        "width": 355,
+        "height": 307
+      },
+      "connectedAlphaPixels": 77382
+    },
+    "torso": {
+      "rect": {
+        "x": 452,
+        "y": 70,
+        "width": 388,
+        "height": 362
+      },
+      "solidBounds": {
+        "x": 460,
+        "y": 78,
+        "width": 372,
+        "height": 346
+      },
+      "connectedAlphaPixels": 98314
+    },
+    "nearArm": {
+      "rect": {
+        "x": 987,
+        "y": 193,
+        "width": 180,
+        "height": 197
+      },
+      "solidBounds": {
+        "x": 995,
+        "y": 201,
+        "width": 164,
+        "height": 181
+      },
+      "connectedAlphaPixels": 18162
+    },
+    "farArm": {
+      "rect": {
+        "x": 140,
+        "y": 545,
+        "width": 165,
+        "height": 199
+      },
+      "solidBounds": {
+        "x": 148,
+        "y": 553,
+        "width": 149,
+        "height": 183
+      },
+      "connectedAlphaPixels": 17613
+    },
+    "nearLeg": {
+      "rect": {
+        "x": 537,
+        "y": 558,
+        "width": 184,
+        "height": 196
+      },
+      "solidBounds": {
+        "x": 545,
+        "y": 566,
+        "width": 168,
+        "height": 180
+      },
+      "connectedAlphaPixels": 20515
+    },
+    "farLeg": {
+      "rect": {
+        "x": 988,
+        "y": 567,
+        "width": 167,
+        "height": 187
+      },
+      "solidBounds": {
+        "x": 996,
+        "y": 575,
+        "width": 151,
+        "height": 171
+      },
+      "connectedAlphaPixels": 18067
+    },
+    "blink": {
+      "rect": {
+        "x": 32,
+        "y": 834,
+        "width": 371,
+        "height": 322
+      },
+      "solidBounds": {
+        "x": 40,
+        "y": 842,
+        "width": 355,
+        "height": 306
+      },
+      "connectedAlphaPixels": 77304
+    },
+    "front": {
+      "rect": {
+        "x": 438,
+        "y": 828,
+        "width": 378,
+        "height": 326
+      },
+      "solidBounds": {
+        "x": 446,
+        "y": 836,
+        "width": 362,
+        "height": 310
+      },
+      "connectedAlphaPixels": 83576
+    },
+    "frontBody": {
+      "rect": {
+        "x": 856,
+        "y": 852,
+        "width": 372,
+        "height": 321
+      },
+      "solidBounds": {
+        "x": 864,
+        "y": 860,
+        "width": 356,
+        "height": 305
+      },
+      "connectedAlphaPixels": 82192
+    }
+  },
+  "jointsStatus": "unverified; parent owns rig-profile.json and runtime tuning",
+  "maskStatus": "unverified exact semantic registration",
+  "notes": [
+    "Raw generated PNG bytes and alpha preserved; no pixel editing or crop/repaint applied.",
+    "Actual canvas is 1254x1254 rather than requested preferred 1536x1536.",
+    "Some parts exceed requested 350px extent and/or 80px nominal cell margins; use measured global-component rectangles, not fixed grid cell crops.",
+    "Opaque-interior alpha255 requirement was not achieved; predominant atlas alpha is 253 and mask alpha is 254.",
+    "Garment masks are generated candidates. Canvas equality and silhouette containment metrics do not prove exact semantic fabric boundary registration.",
+    "Pivots, joints, widths, foot contacts, neck joins, turn transitions, garment recoloring, selection bounds and all procedural action playback remain unverified pending parent runtime integration."
+  ]
+}

@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="referrer" content="no-referrer">
+ <title>agent office</title>
+ <link rel="icon" href="data:,">
+ <link rel="manifest" href="manifest.webmanifest">
+ <link rel="apple-touch-icon" href="icons/icon-180.png">
+ <meta name="theme-color" content="#f3efe4">
+ <link rel="stylesheet" href="style.css">
+ <script type="module" src="ui/src/main.js"></script>
+</head>
+<body>
+ <main class="app" id="app">
+  <header class="topbar">
+   <span class="brand"><span class="brand-mark" aria-hidden="true">ao.</span><span>agent office<small data-i18n="tagline"></small></span></span>
+   <span class="space-label" id="connection" role="status"><i aria-hidden="true"></i><span id="connection-text"></span><span id="last-update" class="last-update" hidden></span></span>
+   <span id="hook-warning" class="hook-warning" role="status" hidden></span>
+   <span id="notify-warning" class="hook-warning notify-warning" role="status" hidden><span id="notify-warning-text"></span><button type="button" id="notify-settings" class="notify-action"></button><button type="button" id="notify-dismiss" class="notify-action"></button></span>
+   <label class="language-choice"><span class="sr-only" data-i18n="language"></span><select id="language-choice"></select></label>
+  </header>
+  <section class="summary-bar" data-i18n-aria-label="summary">
+   <button type="button" class="summary-item needs" id="summary-needs" data-show="needs"><i class="dot needs" aria-hidden="true"></i><span data-i18n="needs"></span><strong id="count-needs">0</strong></button>
+   <button type="button" class="summary-item" id="summary-working" data-show="working"><i class="dot working" aria-hidden="true"></i><span data-i18n="working"></span><strong id="count-working">0</strong></button>
+   <button type="button" class="summary-item" id="summary-resting" data-show="resting"><i class="dot done" aria-hidden="true"></i><span data-i18n="resting"></span><strong id="count-resting">0</strong></button>
+   <button type="button" class="summary-item" id="summary-waiting" data-show="waiting"><i class="dot waiting" aria-hidden="true"></i><span data-i18n="waiting"></span><strong id="count-waiting">0</strong></button>
+   <div class="summary-item"><i class="dot long" aria-hidden="true"></i><span data-i18n="long"></span><strong id="count-long">0</strong></div>
+   <button type="button" class="summary-item summary-usage" id="summary-limits" hidden></button>
+   <button type="button" class="summary-item summary-usage" id="summary-cost" hidden></button>
+   <button type="button" id="motion-toggle" class="quiet-button" aria-pressed="false"></button>
+  </section>
+  <section id="viewer-alerts" class="viewer-alerts" hidden>
+   <button type="button" id="alert-sound" class="quiet-button" aria-pressed="true"></button>
+   <button type="button" id="push-toggle" class="quiet-button" aria-pressed="false" hidden></button>
+   <span id="push-note" class="push-note" hidden></span>
+  </section>
+  <div id="alert-banner" class="alert-banner" role="alert" hidden><button type="button" id="alert-open" class="alert-open"><strong id="alert-title"></strong><span id="alert-body"></span></button><button type="button" id="alert-close" class="alert-close">×</button></div>
+  <section id="pair-panel" class="pair-panel" aria-labelledby="pair-title" hidden>
+   <h2 id="pair-title" data-i18n="pairTitle"></h2>
+   <p data-i18n="pairHelp"></p>
+   <form id="pair-form" class="pair-form">
+    <label><span data-i18n="pairCode"></span><input id="pair-code" name="code" required autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" maxlength="12" placeholder="ABCD-2345"></label>
+    <label><span data-i18n="pairName"></span><input id="pair-name" name="name" maxlength="40" data-i18n-placeholder="pairNamePlaceholder"></label>
+    <button type="submit" id="pair-submit" data-i18n="pairSubmit"></button>
+   </form>
+   <p id="pair-error" class="pair-error" role="alert" hidden></p>
+  </section>
+  <div class="workspace">
+   <section class="office-panel" id="office-panel" aria-labelledby="office-label">
+    <div class="office-chrome"><div><span class="live-dot" aria-hidden="true"></span><span id="office-label" data-i18n="office"></span><span id="room-size-label"></span></div><span class="chrome-tools"><span class="interaction-hint" id="interaction-hint"></span><button type="button" id="scenery-toggle" class="quiet-button expand-button"></button><button type="button" id="waiting-toggle" class="quiet-button expand-button" aria-pressed="true"></button><button type="button" id="expand-office" class="quiet-button expand-button" aria-pressed="false"></button></span></div>
+    <div class="stage" id="stage">
+     <canvas id="office" aria-hidden="true"></canvas>
+     <div id="actor-targets" class="actor-targets" data-i18n-aria-label="colleagues"></div>
+     <div id="preview-card" class="preview-card" role="tooltip" hidden></div>
+     <p id="art-note" class="art-note" role="status" hidden></p>
+     <p id="launch-note" class="launch-note" role="alert" hidden><span data-i18n="launchNote"></span><span class="launch-refused" data-i18n="launchRefused"></span></p>
+    </div>
+    <div class="room-footer"><span id="room-status"></span><div class="scene-legend"><span><i class="dot needs" aria-hidden="true"></i><span data-i18n="legendNeeds"></span></span><span><i class="dot long" aria-hidden="true"></i><span data-i18n="legendLong"></span></span><span><i class="dot unknown" aria-hidden="true"></i><span data-i18n="legendUnknown"></span></span></div></div>
+   </section>
+   <aside class="side-panel" data-i18n-aria-label="sessionList">
+    <section id="list-panel" class="glance-panel">
+     <div class="list-head"><span class="tiny-label" data-i18n="sessionList"></span><button type="button" id="new-session" class="quiet-button expand-button new-session" aria-controls="start-panel" aria-expanded="false" hidden></button><button type="button" id="list-close" class="quiet-button expand-button list-close" data-i18n-aria-label="listCloseLabel" data-i18n-title="listCloseTitle"><span data-i18n="listClose"></span> <span aria-hidden="true">»</span></button></div>
+     <form id="start-panel" class="start-panel" hidden></form>
+     <div class="list-tabs" role="tablist" data-i18n-aria-label="listTabs">
+      <button type="button" role="tab" id="tab-needs" data-tab="needs" aria-selected="true" aria-controls="session-list"><span data-i18n="needs"></span> <span class="tab-count" id="tab-count-needs">0</span></button>
+      <button type="button" role="tab" id="tab-working" data-tab="working" aria-selected="false" aria-controls="session-list"><span data-i18n="working"></span> <span class="tab-count" id="tab-count-working">0</span></button>
+      <button type="button" role="tab" id="tab-resting" data-tab="resting" aria-selected="false" aria-controls="session-list"><span data-i18n="resting"></span> <span class="tab-count" id="tab-count-resting">0</span></button>
+      <button type="button" role="tab" id="tab-waiting" data-tab="waiting" aria-selected="false" aria-controls="session-list"><span data-i18n="waiting"></span> <span class="tab-count" id="tab-count-waiting">0</span></button>
+      <button type="button" role="tab" id="tab-all" data-tab="all" aria-selected="false" aria-controls="session-list"><span data-i18n="all"></span> <span class="tab-count" id="tab-count-all">0</span></button>
+      <button type="button" role="tab" id="tab-home" data-tab="home" aria-selected="false" aria-controls="session-list"><span data-i18n="home"></span> <span class="tab-count" id="tab-count-home">0</span></button>
+     </div>
+     <div id="all-filters" class="home-filters" hidden>
+      <label class="filter-check"><input id="show-internal" type="checkbox"> <span data-i18n="showInternal"></span></label>
+     </div>
+     <div id="home-filters" class="home-filters" hidden>
+      <div class="filter-group" role="group" data-i18n-aria-label="agent">
+       <button type="button" data-home-filter="agent" data-value="" aria-pressed="true" data-i18n="all"></button>
+       <button type="button" data-home-filter="agent" data-value="claude-code" aria-pressed="false">Claude Code</button>
+       <button type="button" data-home-filter="agent" data-value="codex" aria-pressed="false">Codex</button>
+      </div>
+      <div class="filter-group" role="group" data-i18n-aria-label="leftWhen">
+       <button type="button" data-home-filter="range" data-value="1h" aria-pressed="false" data-i18n="oneHour"></button>
+       <button type="button" data-home-filter="range" data-value="2h" aria-pressed="false" data-i18n="twoHours"></button>
+       <button type="button" data-home-filter="range" data-value="today" aria-pressed="false" data-i18n="today"></button>
+       <button type="button" data-home-filter="range" data-value="all" aria-pressed="true" data-i18n="all"></button>
+      </div>
+      <div class="filter-group" role="group" data-i18n-aria-label="endedHow">
+       <button type="button" data-home-filter="kind" data-value="all" aria-pressed="true" data-i18n="everyKind"></button>
+       <button type="button" data-home-filter="kind" data-value="look" aria-pressed="false" data-i18n="worthALook"></button>
+      </div>
+     </div>
+     <label class="search"><span class="sr-only" data-i18n="search"></span><input id="search" type="search" data-i18n-placeholder="searchPlaceholder" autocomplete="off"></label>
+     <details id="usage-status" class="usage-status" hidden>
+      <summary id="usage-summary"></summary>
+      <div id="usage-limits" class="usage-limits"></div>
+      <div class="usage-controls">
+       <div class="filter-group" role="group">
+        <button type="button" data-usage-period="1" aria-pressed="false"></button>
+        <button type="button" data-usage-period="7" aria-pressed="true"></button>
+        <button type="button" data-usage-period="30" aria-pressed="false"></button>
+       </div>
+       <div class="filter-group" role="group">
+        <button type="button" data-usage-group="agent" aria-pressed="true"></button>
+        <button type="button" data-usage-group="project" aria-pressed="false"></button>
+        <button type="button" data-usage-group="model" aria-pressed="false"></button>
+       </div>
+      </div>
+      <p id="usage-total" class="usage-total"></p>
+      <div id="usage-rows" class="usage-rows"></div>
+      <p id="usage-note" class="detail-note usage-note"></p>
+     </details>
+     <details id="schedule-status" class="schedule-status" hidden><summary id="schedule-summary"></summary><div id="schedule-sources"></div><div id="schedule-tasks"></div></details>
+     <div id="session-list" class="worker-list" role="tabpanel" aria-labelledby="tab-needs"></div>
+     <p id="list-empty" class="empty-roster" hidden></p>
+     <p class="side-note" data-i18n="identityNote"></p>
+    </section>
+    <section id="detail-panel" class="detail-panel" aria-labelledby="detail-title" hidden>
+     <div class="detail-top"><span class="tiny-label" data-i18n="detail"></span><button type="button" id="close-detail" class="icon-button" data-i18n-aria-label="closeDetail">×</button></div>
+     <div id="detail-content"></div>
+     <div id="detail-actions" class="detail-actions">
+      <button type="button" id="open-session" class="open-button" data-i18n="openSession"></button>
+      <p id="open-result" class="open-result" role="status" hidden></p>
+      <div id="open-command" class="open-command" hidden><code id="open-command-text"></code><button type="button" id="copy-command" class="quiet-button" data-i18n="copy"></button></div>
+      <div id="continue-here" class="continue-here" hidden><p id="continue-text"></p><code id="continue-command"></code></div>
+      <div id="send-home" class="send-home" hidden><button type="button" id="dismiss-session" class="quiet-button" data-i18n="sendHome"></button><p id="send-home-note"></p></div>
+      <div id="process-controls" class="process-controls" hidden></div>
+      <form id="note-editor" class="note-editor" hidden>
+       <label><span data-i18n="nickname"></span><input id="note-nickname" maxlength="24" data-i18n-placeholder="nicknamePlaceholder" autocomplete="off"></label>
+       <label><span data-i18n="memo"></span><input id="note-description" maxlength="120" data-i18n-placeholder="memoPlaceholder" autocomplete="off"></label>
+       <label><span data-i18n="character"></span><select id="note-species"></select></label>
+       <label class="check"><input type="checkbox" id="note-watched"> <span data-i18n="watch"></span></label>
+       <label class="check"><input type="checkbox" id="note-alert"> <span data-i18n="alertOnRest"></span></label>
+       <div class="note-actions"><button type="submit" id="note-save" data-i18n="save"></button><span id="note-status" role="status"></span></div>
+      </form>
+     </div>
+    </section>
+   </aside>
+   <button type="button" id="list-handle" class="list-handle" hidden data-i18n-aria-label="listOpen" data-i18n-title="listOpen"><span data-i18n="listHandle"></span><strong id="handle-count">0</strong></button>
+  </div>
+  <footer><p data-i18n="footer"></p></footer>
+ </main>
+ <div id="sheet-backdrop" class="sheet-backdrop" hidden></div>
+</body>
+</html>

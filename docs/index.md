@@ -1,0 +1,25 @@
+---
+summary: Map of every document under docs/ with its one-line summary and when to read it, generated from each file's frontmatter.
+read_when: You are starting any task in this repository and need to pick which documents to open.
+---
+# Documentation index
+
+Generated from the `summary` / `read_when` frontmatter of each file.
+
+## Core specs
+
+| Document | Summary | Read when |
+| --- | --- | --- |
+| [click-panel-and-controls.md](click-panel-and-controls.md) | What happens when a character or a list row is pointed at or clicked: the hover card, the pinned detail panel and the phone bottom sheet, the ways to open the exact session, the control actions an adapter may declare, and the request and duplicate-prevention rules. | You implement the hover card, the detail panel or the phone bottom sheet, add an open-session means or a control to an adapter, or change how control requests are confirmed. |
+| [control-tab.md](control-tab.md) | The control tab beside the game screen: seven sub-tabs that show the same data as tables and lists and host every editing action. | You implement or change a sub-tab, or need to know where a setting or action lives. |
+| [customizing.md](customizing.md) | How to give your own copy of the office a different look and a different cast of characters, by changing settings, art files and the source; what each file is for, what the engine keeps fixed, and how to see the result. Packs are not loaded yet, so customizing today means editing your copy. | You want to change the office's furniture, walls, window view or colours, replace a species' drawings, add or remove a species, or change how sessions get their characters. |
+| [data-access.md](data-access.md) | Exactly what the app reads from each AI agent, what its hook forwards, which files it writes, which network calls exist, and what it never touches. | You want to verify the privacy claims, review what the installer changes on your machine, or audit a release. |
+| [events.md](events.md) | The standard event (state report) that every adapter, script and HTTP client produces, its fields and compatibility rules, the daemon's local HTTP API, and the `emit` CLI. | Writing an adapter, posting events from a script or cron job, consuming the daemon API from the UI, or changing any event field. |
+| [notifications.md](notifications.md) | When and how the daemon notifies about attention signals (approval/input waits, failed turns, lost sessions, finished turns) and quota events, which channels exist, what the queue tab lists, how a click reaches the right terminal window or tmux pane, and how session, PID and window are linked. | Implementing the notifier, a notification channel, window focus, or the queue tab; or changing what a notification may contain. |
+| [overview.md](overview.md) | One-page introduction to the project, its differentiators, the character model, and shared terminology. | You are new to the repository, or you need the canonical meaning of a term used in other docs. |
+| [packs.md](packs.md) | The open pack formats: character packs as Aseprite sheet exports and room packs as Tiled maps, with required animations, manifest fields, and the asset policy. | You create or validate a character or room pack, or change what the engine expects from a pack. |
+| [privacy-security.md](privacy-security.md) | The privacy and security rules every component follows: metadata only, local only, read-only access to agent data, additive installer, and the contract for running external commands. | You touch anything that reads agent files or databases, sends data anywhere, runs an external command, or displays text that came from an agent. |
+| [spaces.md](spaces.md) | The one office space and its planned zones: which kind of work goes to which zone, how a session is assigned to one, and how scheduled work is shown. | You implement zone (room) assignment, add a room pack, or change classification rules. |
+| [storage.md](storage.md) | One SQLite file holds session snapshots, state history, control requests, notifications, usage samples and daily aggregates, rate-limit observations, desk assignments and user notes, with per-table retention and a cleanup policy. | Implementing the daemon's persistence, the history/usage tabs, migrations, or retention cleanup. |
+| [ui-boards-and-labels.md](ui-boards-and-labels.md) | The one office space and the list of every session beside it, where numbers live (the lobby board's summary row, service cards, timetable board), the hover card, and the rules for head labels above characters. | You render the list beside the scene, a board, the hover card or a head label, add a displayed item, or change label settings and overlap handling. |
+| [usage-and-cost.md](usage-and-cost.md) | How subscription limits (Codex rate_limits) and token usage are collected from local logs, deduplicated, aggregated per local day, priced from a bundled table (network refresh opt-in), and labelled as estimated vs billed. | Implementing the usage tab, the lobby board limit bars, log-based token collection, pricing, or anything that shows money. |

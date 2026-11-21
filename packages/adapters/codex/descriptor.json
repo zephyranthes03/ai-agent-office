@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "id": "codex",
+  "name": "Codex",
+  "homepage": "https://developers.openai.com/codex",
+  "versions_tested": [
+    "0.162.1",
+    "0.163.0"
+  ],
+  "process_names": [
+    "codex"
+  ],
+  "strategies": [
+    {
+      "kind": "hook",
+      "provides": [
+        "state",
+        "identity"
+      ],
+      "note": "Primary. Installed via ~/.codex/hooks.json (created if absent); config.toml and notify are never touched."
+    },
+    {
+      "kind": "session_log",
+      "provides": [
+        "tokens",
+        "limits"
+      ],
+      "reads": [
+        "~/.codex/sessions/*/*/*/rollout-*.jsonl"
+      ],
+      "max_read_bytes": 1048576,
+      "allowlisted_keys": [
+        "type",
+        "timestamp",
+        "payload.type",
+        "payload.model",
+        "payload.info.total_token_usage",
+        "payload.info.last_token_usage",
+        "payload.rate_limits",
+        "payload.id"
+      ],
+      "note": "token_count events; rate_limits selection rules in docs/usage-and-cost.md."
+    },
+    {
+      "kind": "local_db",
+      "provides": [
+        "identity",
+        "parent_links",
+        "origin"
+      ],
+      "reads": [
+        "~/.codex/state_5.sqlite"
+      ],
+      "allowlisted_keys": [
+        "threads.id",
+        "threads.cwd",
+        "threads.source",
+        "threads.thread_source",
+        "threads.originator",
+        "threads.agent_role",
+        "threads.agent_nickname",
+        "threads.approval_mode",
+        "threads.name",
+        "threads.title",
+        "thread_spawn_edges.*"
+      ],
+      "note": "Opened read-only. Implemented: name, else title, of active hook-reported threads (the app's title, ≤ 64 characters, memory only); agent_nickname of their subagent threads; whether each thread is listed (absent 5 s after its first hook: the app's own)."
+    },
+    {
+      "kind": "local_db",
+      "provides": [
+        "schedule"
+      ],
+      "reads": [
+        "~/.codex/sqlite/codex.db"
+      ],
+      "allowlisted_keys": [
+        "automations.id",
+        "automations.name",
+        "automations.status",
+        "automations.kind",
+        "automations.rrule",
+        "automations.next_run_at",
+        "automations.next_run_nominal_at",
+        "automations.last_run_at",
+        "automations.cwds",
+        "automations.target_thread_id",
+        "automation_runs.thread_id",
+        "automation_runs.automation_id",
+        "automation_runs.status",
+        "automation_runs.created_at"
+      ],
+      "note": "Read-only each pass (2026-11-01): the schedule, the task's own thread and each run's thread; a session links by exact thread id only. Outcomes: rows, empty, unreadable, unsupported; no fallback. Run-verified: heartbeat (turns of its thread, no run row)."
+    },
+    {
+      "kind": "process_scan",
+      "provides": [
+        "liveness"
+      ]
+    },
+    {
+      "kind": "transcript_metadata",
+      "provides": [
+        "state"
+      ],
+      "reads": [
+        "~/.codex/sessions/*/*/*/rollout-*.jsonl"
+      ],
+      "max_read_bytes": 1048576,
+      "allowlisted_keys": [
+        "type",
+        "payload.approval_policy",
+        "payload.approvals_reviewer"
+      ],
+      "note": "Who answers the turn's approval requests: the newest turn_context of the rollout the PermissionRequest hook names, read once per turn. With approvals_reviewer = auto_review (0.166.0) the request is Codex's own reviewer's, not a wait for the owner."
+    }
+  ],
+  "hook_events": [
+    "SessionStart",
+    "SessionEnd",
+    "UserPromptSubmit",
+    "PreToolUse",
+    "PostToolUse",
+    "PermissionRequest",
+    "Stop",
+    "SubagentStart",
+    "SubagentStop",
+    "Interrupt"
+  ],
+  "tool_classes": {
+    "request_user_input": "input",
+    "collaborationwait_agent": "dependency"
+  },
+  "open": [
+    "focus_window",
+    "cli"
+  ],
+  "open_cli": {
+    "command": "codex",
+    "args": [
+      "resume",
+      "{session}"
+    ],
+    "verified": true
+  },
+  "controls": [],
+  "schedule": [],
+  "usage": {
+    "tokens": true,
+    "limits": true,
+    "limits_source": "session_log.rate_limits"
+  },
+  "service": {
+    "controls": [
+      "start",
+      "stop",
+      "restart"
+    ],
+    "command": "codex",
+    "process_names": [
+      "codex"
+    ],
+    "identify": {
+      "by": "file_holder",
+      "path": "~/.codex/app-server-daemon/daemon.stderr.log"
+    },
+    "status": {
+      "args": [
+        "app-server",
+        "daemon",
+        "version"
+      ],
+      "format": "codex_version"
+    },
+    "start": {
+      "args": [
+        "app-server",
+        "daemon",
+        "start"
+      ]
+    },
+    "stop": {
+      "args": [
+        "app-server",
+        "daemon",
+        "stop"
+      ]
+    },
+    "restart": {
+      "args": [
+        "app-server",
+        "daemon",
+        "restart"
+      ]
+    },
+    "timeout_s": 30,
+    "settle_s": 15,
+    "verified": true
+  },
+  "permissions": {
+    "read_paths": [
+      "~/.codex/sessions/**/*.jsonl",
+      "~/.codex/state_5.sqlite",
+      "~/.codex/sqlite/codex.db",
+      "~/.codex/hooks.json"
+    ],
+    "write_paths": [
+      "~/.codex/hooks.json"
+    ],
+    "network": [],
+    "spawn": [
+      "codex"
+    ]
+  }
+}

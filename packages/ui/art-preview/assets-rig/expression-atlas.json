@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "image": "./assets-rig/expression-v1.png",
+  "width": 1536,
+  "height": 1024,
+  "coordinateSystem": "source pixels",
+  "cropPolicy": "Rectangles are measured connected alpha>=16 bounds plus 8 source pixels of padding; original PNG preserved. No assembly pivots or scaling are specified.",
+  "species": {
+    "otter": {
+      "blink": {
+        "rect": {
+          "x": 37,
+          "y": 112,
+          "width": 509,
+          "height": 374
+        },
+        "solidBounds": {
+          "x": 45,
+          "y": 120,
+          "width": 493,
+          "height": 358
+        }
+      },
+      "front": {
+        "rect": {
+          "x": 45,
+          "y": 566,
+          "width": 471,
+          "height": 393
+        },
+        "solidBounds": {
+          "x": 53,
+          "y": 574,
+          "width": 455,
+          "height": 377
+        }
+      }
+    },
+    "cat": {
+      "blink": {
+        "rect": {
+          "x": 550,
+          "y": 72,
+          "width": 505,
+          "height": 422
+        },
+        "solidBounds": {
+          "x": 558,
+          "y": 80,
+          "width": 489,
+          "height": 406
+        }
+      },
+      "front": {
+        "rect": {
+          "x": 539,
+          "y": 524,
+          "width": 470,
+          "height": 439
+        },
+        "solidBounds": {
+          "x": 547,
+          "y": 532,
+          "width": 454,
+          "height": 423
+        }
+      }
+    },
+    "bird": {
+      "blink": {
+        "rect": {
+          "x": 1047,
+          "y": 67,
+          "width": 457,
+          "height": 426
+        },
+        "solidBounds": {
+          "x": 1055,
+          "y": 75,
+          "width": 441,
+          "height": 410
+        }
+      },
+      "front": {
+        "rect": {
+          "x": 1037,
+          "y": 514,
+          "width": 475,
+          "height": 454
+        },
+        "solidBounds": {
+          "x": 1045,
+          "y": 522,
+          "width": 459,
+          "height": 438
+        }
+      }
+    }
+  }
+}

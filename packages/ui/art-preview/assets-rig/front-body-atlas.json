@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "image": "./assets-rig/front-turn-body-v1.png",
+  "width": 1536,
+  "height": 1024,
+  "coordinateSystem": "source pixels",
+  "cropPolicy": "Rectangles are measured connected alpha>=16 bounds plus 8 source pixels of padding. Original PNG bytes are preserved. Runtime scaling and neck/feet alignment remain renderer responsibilities.",
+  "species": {
+    "otter": {
+      "rect": {
+        "x": 28,
+        "y": 274,
+        "width": 487,
+        "height": 520
+      },
+      "solidBounds": {
+        "x": 36,
+        "y": 282,
+        "width": 471,
+        "height": 504
+      }
+    },
+    "cat": {
+      "rect": {
+        "x": 525,
+        "y": 276,
+        "width": 490,
+        "height": 518
+      },
+      "solidBounds": {
+        "x": 533,
+        "y": 284,
+        "width": 474,
+        "height": 502
+      }
+    },
+    "bird": {
+      "rect": {
+        "x": 1028,
+        "y": 297,
+        "width": 492,
+        "height": 497
+      },
+      "solidBounds": {
+        "x": 1036,
+        "y": 305,
+        "width": 476,
+        "height": 481
+      }
+    }
+  }
+}

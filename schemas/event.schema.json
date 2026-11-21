@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:agent-office:schema:event:1",
+  "title": "Standard event (state report) v1",
+  "description": "One session's state as reported to the daemon by an adapter, a script (`emit`), or HTTP POST /v1/events. Compatibility: fields are only ever added; consumers MUST ignore unknown fields; `schema_version` is bumped only for incompatible changes (see schemas/README.md).",
+  "$comment": "additionalProperties is intentionally not set to false: unknown fields are ignored, not rejected.",
+  "type": "object",
+  "required": ["schema_version", "agent", "session", "state", "ts"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "agent": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$", "description": "Agent kind = character species (e.g. claude-code, codex, cron-script)." },
+    "session": { "type": "string", "minLength": 1, "maxLength": 256, "description": "Session id = one character. Child sessions use '<parent>/<child id>' when the agent has no id of its own." },
+    "parent": { "type": ["string", "null"], "maxLength": 256, "description": "Parent session id for subagents." },
+    "child_type": { "type": "string", "maxLength": 64, "description": "For a subagent: its kind as its agent names it (Claude Code's agent_type, a Codex thread's role), set by the daemon from the hooks; ignored on input." },
+    "project": { "type": ["string", "null"], "maxLength": 128, "description": "Project folder name = desk group." },
+    "cwd": { "type": ["string", "null"], "maxLength": 1024, "description": "Working directory (used for project and space rules; never displayed in screen-share mode)." },
+    "delegations": {
+      "type": "object",
+      "description": "Work the session handed to other sessions (a delegation tool, such as the Claude app's cloud session start), set by the daemon from the hooks; ignored on input. `open`: not yet back (where, who asked, since when); `returned`: results that came back as task notifications.",
+      "properties": {
+        "open": { "type": "array", "items": { "type": "object", "properties": { "target": { "type": ["string", "null"], "maxLength": 32 }, "initiation": { "type": ["string", "null"], "maxLength": 32 }, "since": { "type": "string", "format": "date-time" } }, "required": ["target", "initiation", "since"] } },
+        "returned": { "type": "integer", "minimum": 0 }
+      },
+      "required": ["open", "returned"]
+    },
+    "background": { "type": "integer", "minimum": 1, "maximum": 99, "description": "Daemon-set, informational: how much of the session's background work (commands, subagents, monitors it left running) still ran when its agent last said, as its hook counted it; absent when none. The session is not waiting for the owner: it rests while the work runs. Ignored on input." },
+    "launcher": { "type": "string", "enum": ["claude-app", "codex-app", "vscode", "terminal"], "description": "Where the session runs (an app, an editor, a terminal), set by the daemon from the session's verified process; ignored on input." },
+    "title": { "type": "string", "maxLength": 64, "description": "The title the agent's own apps show for the session (Claude Code's session title, a Codex thread's name), read by the daemon; ignored on input." },
+    "space": { "type": ["string", "null"], "pattern": "^[a-z0-9][a-z0-9-]{0,31}$", "description": "Room id override; otherwise classified by rules." },
+    "state": { "$ref": "#/$defs/state" },
+    "lifecycle": { "type": "string", "enum": ["active", "ended"], "default": "active" },
+    "waiting_on": {
+      "type": ["object", "null"],
+      "required": ["reason"],
+      "properties": {
+        "reason": { "type": "string", "enum": ["approval", "input", "child", "tool", "schedule"] },
+        "target": { "type": ["string", "null"], "maxLength": 64 }
+      }
+    },
+    "result": {
+      "type": ["object", "null"],
+      "required": ["outcome"],
+      "properties": {
+        "outcome": { "type": "string", "enum": ["completed", "failed", "interrupted", "cancelled"] },
+        "at": { "type": "string", "format": "date-time" },
+        "summary": { "type": ["string", "null"], "maxLength": 64, "description": "Short status text only; never conversation content." }
+      }
+    },
+    "detail": { "type": ["string", "null"], "maxLength": 64, "description": "Current tool or waiting target. Control characters stripped by the sender; the daemon strips again." },
+    "origin": { "type": "string", "enum": ["human", "scheduled", "automation", "sdk", "external", "unknown"], "default": "unknown" },
+    "tokens": {
+      "type": ["object", "null"],
+      "properties": {
+        "in": { "type": "integer", "minimum": 0 },
+        "out": { "type": "integer", "minimum": 0 },
+        "cached_in": { "type": "integer", "minimum": 0 },
+        "cache_write_in": { "type": "integer", "minimum": 0 },
+        "reasoning_out": { "type": "integer", "minimum": 0 },
+        "scope": { "type": "string", "enum": ["event", "turn", "session_total"], "default": "event", "description": "Whether the counts are a delta for this event or a running total (see docs/usage-and-cost.md dedupe rules)." }
+      }
+    },
+    "model": { "type": ["string", "null"], "maxLength": 128 },
+    "ttl_s": { "type": "integer", "minimum": 1, "maximum": 86400, "description": "For direct reports only: seconds after which the state is considered stale (→ unknown)." },
+    "ts": { "type": "string", "format": "date-time", "description": "Event time, ISO 8601 (UTC recommended)." }
+  },
+  "if": { "properties": { "state": { "enum": ["waiting_user", "waiting_dependency"] } }, "required": ["state"] },
+  "then": { "required": ["waiting_on"], "properties": { "waiting_on": { "type": "object" } } },
+  "$defs": {
+    "state": {
+      "type": "string",
+      "enum": ["idle", "working", "waiting_dependency", "waiting_user", "error", "done", "unknown", "paused", "cancelled"]
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "id": "openclaw",
+  "name": "OpenClaw",
+  "versions_tested": [
+    "2026.4.2",
+    "2026.11.1"
+  ],
+  "process_names": [],
+  "strategies": [
+    {
+      "kind": "local_db",
+      "provides": [
+        "schedule"
+      ],
+      "reads": [
+        "~/.openclaw/cron/jobs.json",
+        "~/.openclaw/cron/runs/*.jsonl",
+        "~/.openclaw/state/openclaw.sqlite"
+      ],
+      "max_read_bytes": 1048576,
+      "allowlisted_keys": [
+        "version",
+        "jobs.id",
+        "jobs.name",
+        "jobs.enabled",
+        "jobs.schedule",
+        "jobs.state.nextRunAtMs",
+        "jobs.state.runningAtMs",
+        "jobs.state.lastRunAtMs",
+        "jobs.state.lastRunStatus",
+        "jobs.state.lastStatus",
+        "jobId",
+        "action",
+        "status",
+        "sessionId",
+        "runAtMs",
+        "config_machine_state.cron.store",
+        "cron_jobs.store_key",
+        "cron_jobs.job_id",
+        "cron_jobs.name",
+        "cron_jobs.enabled",
+        "cron_jobs.job_json.schedule",
+        "cron_jobs.state_json.nextRunAtMs",
+        "cron_jobs.state_json.runningAtMs",
+        "cron_jobs.state_json.lastRunAtMs",
+        "cron_jobs.state_json.lastRunStatus",
+        "cron_jobs.state_json.lastStatus",
+        "cron_run_receipts.status",
+        "cron_run_receipts.started_at_ms",
+        "task_runs.runtime",
+        "task_runs.source_id",
+        "task_runs.created_at",
+        "task_runs.detail_json.kind",
+        "task_runs.detail_json.storeKey",
+        "task_runs.detail_json.sessionId",
+        "task_runs.detail_json.runAtMs",
+        "task_runs.detail_json.status"
+      ],
+      "note": "Read-only schedule metadata. Latest shared SQLite selects the exact cron.store partition, JSON metadata leaves, execution receipts and exact run session ids. Legacy JSON is read only when shared SQLite is absent. No hook/process mapping."
+    }
+  ],
+  "open": [],
+  "controls": [],
+  "schedule": [
+    "list"
+  ],
+  "service": {
+    "controls": [
+      "start",
+      "stop",
+      "restart"
+    ],
+    "command": "openclaw",
+    "process_names": [
+      "node"
+    ],
+    "identify": {
+      "by": "launchd",
+      "label": "ai.openclaw.gateway"
+    },
+    "status": {
+      "args": [
+        "gateway",
+        "status",
+        "--json",
+        "--no-probe"
+      ],
+      "format": "openclaw_json"
+    },
+    "health": {
+      "args": [
+        "gateway",
+        "status",
+        "--json"
+      ]
+    },
+    "start": {
+      "args": [
+        "gateway",
+        "start"
+      ]
+    },
+    "stop": {
+      "args": [
+        "gateway",
+        "stop",
+        "--force"
+      ]
+    },
+    "restart": {
+      "args": [
+        "gateway",
+        "restart"
+      ]
+    },
+    "timeout_s": 120,
+    "settle_s": 30,
+    "verified": true
+  },
+  "permissions": {
+    "read_paths": [
+      "~/.openclaw/cron/jobs.json",
+      "~/.openclaw/cron/runs/*.jsonl",
+      "~/.openclaw/state/openclaw.sqlite"
+    ],
+    "write_paths": [],
+    "network": [],
+    "spawn": ["openclaw"]
+  }
+}

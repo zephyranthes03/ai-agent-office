@@ -1,0 +1,14 @@
+{
+  "name": "@agent-office/platform",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Operating-system facts the daemon needs, behind one interface: processes for now (liveness and PID checks); window focus and notifications later.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

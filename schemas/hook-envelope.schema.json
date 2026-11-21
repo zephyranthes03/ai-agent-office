@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:agent-office:schema:hook-envelope:1",
+  "title": "Hook envelope v1",
+  "description": "What the hook command sends to POST /v1/hook/{agent}. The `event` object is an allowlist of hook stdin fields; raw tool input, prompts, messages, and responses are never included (docs/data-access.md). Unknown fields are ignored.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "hook_id",
+    "agent",
+    "observed_at",
+    "event",
+    "process"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "hook_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "agent": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "event": {
+      "$ref": "#/$defs/event"
+    },
+    "process": {
+      "type": "object",
+      "required": [
+        "ppid",
+        "hook_pid"
+      ],
+      "properties": {
+        "ppid": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "hook_pid": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "uid": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "platform": {
+          "type": "string",
+          "enum": [
+            "darwin",
+            "linux",
+            "win32"
+          ]
+        }
+      }
+    },
+    "terminal": {
+      "type": "object",
+      "description": "Allowlisted keys from the hook's own inherited environment, used only for window focus.",
+      "properties": {
+        "TERM_PROGRAM": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "TMUX": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "TMUX_PANE": {
+          "type": "string",
+          "maxLength": 16
+        },
+        "ITERM_SESSION_ID": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "WEZTERM_PANE": {
+          "type": "string",
+          "maxLength": 16
+        },
+        "KITTY_WINDOW_ID": {
+          "type": "string",
+          "maxLength": 16
+        },
+        "KITTY_LISTEN_ON": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "WT_SESSION": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "VSCODE_PID": {
+          "type": "string",
+          "maxLength": 16
+        },
+        "ssh": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "event": {
+      "type": "object",
+      "required": [
+        "hook_event_name",
+        "session_id"
+      ],
+      "properties": {
+        "hook_event_name": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "cwd": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1024
+        },
+        "transcript_path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1024
+        },
+        "permission_mode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 32
+        },
+        "prompt_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        },
+        "turn_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        },
+        "agent_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        },
+        "agent_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        },
+        "tool_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        },
+        "tool_use_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        },
+        "notification_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 64
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 32
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 32
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        },
+        "detail": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 64
+        },
+        "tool_meta": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Only for a PreToolUse of a tool the agent's descriptor classes as `delegation` (it hands work to another session): the tool input's `target` and `initiation` enums; nothing else of the input, never the prompt.",
+          "properties": {
+            "target": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 32
+            },
+            "initiation": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 32
+            }
+          },
+          "required": [
+            "target",
+            "initiation"
+          ],
+          "additionalProperties": false
+        },
+        "background": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 99,
+          "description": "Only on `Stop` and `SubagentStop` of an agent that lists the session's background work (Claude Code's `background_tasks`): how many entries are work still running, not counting idle teammates and the agent's own memory and auto-mode tasks. Only the count leaves the hook; the list's commands and descriptions never do. Null when the input has no list."
+        },
+        "meta": {
+          "type": "object",
+          "description": "Fixture-only: metadata the adapter's transcript strategy would have read (e.g. turnOrigin). Not sent by the hook."
+        },
+        "tool_input": false,
+        "tool_response": false,
+        "prompt": false,
+        "message": false,
+        "last_assistant_message": false,
+        "error": false,
+        "permission_suggestions": false
+      },
+      "$comment": "Content-bearing hook fields are forbidden (false): the hook strips them at the source (docs/data-access.md)."
+    }
+  }
+}

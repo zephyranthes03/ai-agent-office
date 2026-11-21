@@ -1,0 +1,764 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:agent-office:schema:config:1",
+  "title": "User configuration v1 (~/.agent-office/config.json)",
+  "description": "Everything is optional except schema_version; missing sections take the defaults shown. Session descriptions and desk assignments live in the database, not here. Unknown fields are ignored.",
+  "type": "object",
+  "required": [
+    "schema_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "daemon": {
+      "type": "object",
+      "properties": {
+        "port": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 65535,
+          "default": 47631
+        },
+        "bind": {
+          "type": "string",
+          "enum": [
+            "127.0.0.1"
+          ],
+          "default": "127.0.0.1",
+          "description": "The API binds 127.0.0.1 only, with no override. Only the read-only viewer listener (remote_view) can bind another address, given on the command line."
+        },
+        "log_level": {
+          "type": "string",
+          "enum": [
+            "error",
+            "warn",
+            "info",
+            "debug"
+          ],
+          "default": "info"
+        },
+        "stay_awake": {
+          "type": "boolean",
+          "default": false,
+          "description": "Prevent idle sleep only while a local agent process is alive (never when nothing runs); addresses scheduled runs skipped because the machine slept. Off by default."
+        },
+        "reorder_window_s": {
+          "type": "integer",
+          "minimum": 60,
+          "maximum": 3600,
+          "default": 600,
+          "description": "How long per-session inputs are kept for re-reduction when a late input arrives."
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "properties": {
+        "detail_level": {
+          "type": "string",
+          "enum": [
+            "none",
+            "tool",
+            "target",
+            "description"
+          ],
+          "default": "target",
+          "description": "Read by the hook: how much of a tool call becomes `detail`: nothing, the tool name, the tool name with the program or file base name (default), or that plus the description the model wrote for a shell command (free text, so opt-in)."
+        },
+        "screen_share_mode": {
+          "type": "boolean",
+          "default": false,
+          "description": "Hide descriptions, tool targets and project names everywhere."
+        },
+        "title_max_chars": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 128,
+          "default": 64
+        }
+      }
+    },
+    "states": {
+      "type": "object",
+      "properties": {
+        "done_hold_s": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 3
+        },
+        "cancelled_hold_s": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 3
+        },
+        "working_stale_s": {
+          "type": "integer",
+          "minimum": 30,
+          "default": 900
+        },
+        "idle_stale_s": {
+          "type": "integer",
+          "minimum": 60,
+          "default": 21600
+        },
+        "unknown_gone_s": {
+          "type": "integer",
+          "minimum": 60,
+          "default": 7200
+        },
+        "liveness_fresh_s": {
+          "type": "integer",
+          "minimum": 30,
+          "default": 90,
+          "description": "An alive:true liveness report counts as recent for this long (rule H3)."
+        },
+        "approval_wait_timeout_s": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 60,
+          "default": null,
+          "description": "Turn an approval wait into idle once it has lasted this long (rule H6; measured from the start of the wait, not from the last signal). null keeps it until the next signal (H5). Useful when prompts are often denied with Esc, which Claude Code reports with no hook at all."
+        },
+        "long_turn_min": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 20,
+          "description": "Minutes a top-level turn may run before it is marked as running long (a quiet marker, never a notification); 0 turns the marker off."
+        },
+        "away_after_min": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 30,
+          "description": "Minutes a session may rest (a finished, cancelled or paused turn, or a quiet one) before it leaves the office; it comes back with its next turn and stays on the All tab meanwhile. 0 keeps resting sessions in the office."
+        }
+      }
+    },
+    "species": {
+      "type": "object",
+      "description": "agent kind → species id provided by an installed character pack; used when scene.cast is per-agent. Agent kinds not listed get `bird`.",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{0,31}$"
+      },
+      "default": {
+        "claude-code": "cat",
+        "codex": "otter"
+      }
+    },
+    "spaces": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "type": "string",
+          "default": "lounge"
+        },
+        "rules": {
+          "type": "object",
+          "description": "space id → matching rules; evaluated in docs/spaces.md priority order.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "cwd": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 256
+                },
+                "description": "Globs, ~ allowed."
+              },
+              "project": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              },
+              "task_name": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              },
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 64
+                }
+              }
+            }
+          }
+        },
+        "classify_with_local_llm": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "labels": {
+      "type": "object",
+      "properties": {
+        "show": {
+          "type": "string",
+          "enum": ["needs-you", "everyone", "on-hover"],
+          "default": "needs-you",
+          "description": "Whose name tag the office shows without pointing at them: needs-you puts the name into the marker of each session that needs you (on a phone, the short marker and the identity code); everyone also shows every other colleague's name tag; on-hover shows names only on pointing or selecting."
+        },
+        "level": {
+          "$ref": "#/$defs/labelLevel"
+        },
+        "items": {
+          "$ref": "#/$defs/labelItems"
+        },
+        "max_chars": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 64,
+          "default": 24
+        },
+        "by_agent": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/labelOverride"
+          }
+        },
+        "by_space": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/labelOverride"
+          }
+        },
+        "by_session": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/labelOverride"
+          }
+        }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "description": "How the office scene presents sessions (presentation only; states are judged elsewhere).",
+      "properties": {
+        "wander_after_s": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 300,
+          "description": "Seconds a session waits for you, waits on another task or rests before its character starts moving about the office (strolling, resting, looking out of the window, chatting); a waiting character keeps its marker and help gesture. 0 moves at once."
+        },
+        "cast": {
+          "type": "string",
+          "enum": ["per-session", "per-agent", "per-project"],
+          "default": "per-session",
+          "description": "How sessions get their character species: per-session picks one of the bundled species from the session id (the same session always gets the same one); per-agent uses the `species` mapping (agent kind → species); per-project picks one from the project's folder name, so every session of a project looks the same (a session without a project falls back to per-session). A species chosen on a session's card wins over all three."
+        },
+        "needs_you_marker": {
+          "type": "object",
+          "description": "How the marker of a session that needs you grows stronger the longer it waits (colour and size only; it never moves or blinks).",
+          "properties": {
+            "stronger_after_min": {
+              "type": ["integer", "null"],
+              "minimum": 0,
+              "default": 5,
+              "description": "Minutes after which the marker is filled and shows how long it has waited; null never."
+            },
+            "strongest_after_min": {
+              "type": ["integer", "null"],
+              "minimum": 0,
+              "default": 15,
+              "description": "Minutes after which the marker is at its strongest; null never."
+            }
+          },
+          "additionalProperties": false
+        },
+        "needs_you_glow": {
+          "type": "boolean",
+          "default": true,
+          "description": "A colleague waiting for you (an approval or input wait, a failed turn) stands in a still, warm light: an amber glow behind its head and a pale rim around it. It never moves; false turns it off (the marker and the raised paw stay)."
+        },
+        "board": {
+          "type": "object",
+          "description": "The office board on the left wall and the monthly reward display on the right; clicking either opens its record. Counts only top-level turns that ended done (never content).",
+          "properties": {
+            "show": {
+              "type": "boolean",
+              "default": true,
+              "description": "Hang the board on the wall. Hidden, the office and its markers stay the same."
+            },
+            "preset": {
+              "type": "string",
+              "enum": ["combined", "goal", "rhythm", "health"],
+              "default": "combined",
+              "description": "What the board shows: combined (the month's completed turns and today's issues), goal (progress and stamps toward monthly_target), rhythm (completed turns per day), health (today's sessions with a failure, silence or loss, and approval waits)."
+            },
+            "rewards": {
+              "type": "string",
+              "enum": ["shelf", "frames", "none"],
+              "default": "shelf",
+              "description": "How the monthly rewards are displayed on the right wall: a small shelf, wall frames, or not at all (the record still opens from the board)."
+            },
+            "monthly_target": {
+              "type": ["integer", "null"],
+              "minimum": 1,
+              "default": null,
+              "description": "Completed turns a month aims for; null sets no goal (no stamps or rewards, only the record). A month keeps the goal it had when it ended."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "schedule": {
+      "type": "object",
+      "description": "Scheduled tasks the agents' own schedulers plan (today: Codex's scheduled tasks, read from the ChatGPT app's database). The next time comes from the scheduler; nothing is computed from the rule.",
+      "properties": {
+        "bench_before_min": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 60,
+          "description": "Minutes before its next run that a scheduled task sits on a bench in the waiting room (\"예약 HH:MM\"), counted in the waiting room; 0 shows it only once its time has come. It leaves the bench when the run starts."
+        },
+        "missed_after_min": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 15,
+          "description": "Minutes after a scheduled time before an occurrence with no run is called missed (the apps start runs a few minutes late on purpose). It counts only while the daemon was reading the scheduler without a gap since before that time; otherwise the occurrence is unsure."
+        },
+        "rest_after_min": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 5,
+          "description": "Minutes a scheduled task's own thread rests at its desk after a run (so a short run is still seen there) before it waits in the waiting room for the next run; 0 sends it to the waiting room at once. It goes home after states.away_after_min like any session unless the next run is within bench_before_min, and comes back to the waiting room when it is."
+        }
+      },
+      "additionalProperties": false
+    },
+    "notifications": {
+      "type": "object",
+      "properties": {
+        "waiting_user": {
+          "type": "boolean",
+          "default": true
+        },
+        "error": {
+          "type": "boolean",
+          "default": true,
+          "description": "Notify when a session enters error (a failed turn)."
+        },
+        "silent": {
+          "type": "boolean",
+          "default": false,
+          "description": "No effect (kept so older files stay valid): a session that has sent no signal for states.working_stale_s is marked quietly with \"?\" and never notified, because most such turns are long commands that come back by themselves."
+        },
+        "lost": {
+          "type": "boolean",
+          "default": true,
+          "description": "Notify when a session that was working or waiting ends because its process is gone (not when the user ended it)."
+        },
+        "schedule_missed": {
+          "type": "boolean",
+          "default": true,
+          "description": "Notify when a scheduled task's occurrence passes with no run while the daemon was watching (schedule.missed_after_min after its time). An occurrence the daemon could not watch all the while (it or the scheduler's file was down) is marked unsure, never notified."
+        },
+        "ready": {
+          "type": "boolean",
+          "default": false,
+          "description": "Notify when a top-level session finishes its turn and waits for the next instruction."
+        },
+        "ready_min_turn_min": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 10,
+          "description": "With ready on, notify only for turns that took at least this many minutes; 0 means every turn."
+        },
+        "usage_warn_percent": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 80
+        },
+        "channels": {
+          "type": "object",
+          "properties": {
+            "desktop": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "click_opens": {
+                  "type": "string",
+                  "enum": [
+                    "session",
+                    "queue"
+                  ],
+                  "default": "session"
+                }
+              }
+            },
+            "ntfy": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "topic": {
+                  "type": "string",
+                  "maxLength": 64
+                },
+                "click_url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Where a tapped push lands, normally the queue of the remote viewer."
+                }
+              },
+              "description": "Opt-in outbound push (ntfy-compatible); payload is status text only, the same text as a desktop notification."
+            }
+          }
+        },
+        "snooze_default_min": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 15
+        },
+        "min_wait_s": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 3,
+          "description": "Send a desktop notification only after a wait has lasted this long."
+        },
+        "min_wait_s_sdk": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 15,
+          "description": "Same for sessions with origin sdk (e.g. claude -p), which auto-deny permission requests within seconds."
+        },
+        "sound": {
+          "type": "string",
+          "enum": ["chime", "animal", "off"],
+          "default": "chime",
+          "description": "What the desktop app plays with a notification: a general chime, the cry of the species the office shows for that session (the one chosen on its card, else the one the cast gave it), or nothing. The app plays it itself, so it is heard even when the system refuses the notification's banner; a cry the app does not have falls back to the chime."
+        }
+      }
+    },
+    "remote_view": {
+      "type": "object",
+      "description": "The read-only viewer for phones and tablets (server mode). Its bind address is a command-line flag, never configuration; this section only sets what the viewer may show.",
+      "properties": {
+        "detail": {
+          "type": "string",
+          "enum": [
+            "status",
+            "targets",
+            "full"
+          ],
+          "default": "status",
+          "description": "status: name tag (nickname or project folder name), state and waiting reason; targets: adds the current tool or waiting target; full: adds the user description. The working folder is never sent to a viewer. Phone push uses the same level."
+        }
+      }
+    },
+    "usage": {
+      "type": "object",
+      "properties": {
+        "timezone": {
+          "type": "string",
+          "default": "local",
+          "description": "IANA zone or 'local' (the machine's zone)."
+        },
+        "day_starts_at": {
+          "type": "string",
+          "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+          "default": "00:00"
+        },
+        "pricing": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "enum": [
+                "bundled",
+                "models_dev"
+              ],
+              "default": "bundled",
+              "description": "models_dev enables a network fetch and must be chosen explicitly."
+            },
+            "refresh_hours": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 24
+            },
+            "overrides_file": {
+              "type": "string",
+              "maxLength": 256,
+              "default": "custom-pricing.json"
+            }
+          }
+        }
+      }
+    },
+    "servers": {
+      "type": "array",
+      "description": "Local LLM servers polled via the OpenAI-compatible model list endpoint.",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "url"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "poll_s": {
+            "type": "integer",
+            "minimum": 5,
+            "default": 30
+          }
+        }
+      }
+    },
+    "adapters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "strategies_disabled": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "external_sources": {
+      "type": "object",
+      "properties": {
+        "codexbar": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": false
+            },
+            "serve_url": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      }
+    },
+    "storage": {
+      "type": "object",
+      "properties": {
+        "retention_days": {
+          "type": "object",
+          "properties": {
+            "events": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 30
+            },
+            "history": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 90
+            },
+            "usage_daily": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 400
+            }
+          }
+        }
+      }
+    },
+    "packs": {
+      "type": "object",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 256
+          }
+        },
+        "rooms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 256
+          }
+        }
+      }
+    },
+    "external_hooks": {
+      "type": "object",
+      "description": "User-defined commands run on daemon events under the CodexBar-style contract (docs/privacy-security.md).",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false
+        },
+        "rules": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "object",
+            "required": [
+              "events",
+              "command"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "default": false
+              },
+              "events": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 32
+                }
+              },
+              "command": {
+                "type": "string",
+                "pattern": "^/",
+                "maxLength": 32768
+              },
+              "args": {
+                "type": "array",
+                "maxItems": 32,
+                "items": {
+                  "type": "string",
+                  "maxLength": 4096
+                }
+              },
+              "env_allowlist": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 64
+                }
+              },
+              "timeout_s": {
+                "type": "number",
+                "minimum": 0.1,
+                "maximum": 300,
+                "default": 60
+              }
+            }
+          }
+        }
+      }
+    },
+    "app": {
+      "type": "object",
+      "description": "Desktop app shell.",
+      "properties": {
+        "launch_at_login": {
+          "type": "boolean",
+          "default": false
+        },
+        "close_to_tray": {
+          "type": "boolean",
+          "default": true,
+          "description": "Closing the window keeps the daemon and tray icon running."
+        },
+        "terminal": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
+          "description": "Absolute path of the terminal used for CLI resume; null = platform default."
+        }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "description": "The screens: the desktop window, the browser UI, the phone viewer, and the desktop app's tray menu and notifications.",
+      "properties": {
+        "language": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "ko",
+            "en"
+          ],
+          "default": "auto",
+          "description": "The language every screen speaks. auto: each device's own languages (Korean when it prefers Korean, else English). A device can still choose its own in the language menu of the top bar; the tray menu and notifications follow this setting only. Applied when the daemon starts."
+        }
+      }
+    }
+  },
+  "$defs": {
+    "labelLevel": {
+      "type": "string",
+      "enum": [
+        "minimal",
+        "default",
+        "detailed"
+      ],
+      "default": "default"
+    },
+    "labelItems": {
+      "type": "object",
+      "properties": {
+        "nickname": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "boolean"
+        },
+        "project": {
+          "type": "boolean"
+        },
+        "state_text": {
+          "type": "boolean"
+        },
+        "current_target": {
+          "type": "boolean"
+        },
+        "elapsed": {
+          "type": "boolean"
+        },
+        "tokens": {
+          "type": "boolean"
+        }
+      }
+    },
+    "labelOverride": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "$ref": "#/$defs/labelLevel"
+        },
+        "items": {
+          "$ref": "#/$defs/labelItems"
+        }
+      }
+    }
+  }
+}

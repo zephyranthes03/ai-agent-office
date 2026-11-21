@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:agent-office:schema:room-pack:1",
+  "title": "Room pack manifest v1 (manifest.json)",
+  "description": "One pack = one space (room). The map is a Tiled JSON export (.tmj) whose object layer marks desks, doors, benches, boards and props; this manifest declares metadata, license, the object naming convention, and per-state animation/prop overrides. Unknown fields are ignored.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "name",
+    "version",
+    "license",
+    "space",
+    "map",
+    "markers"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 128
+      }
+    },
+    "license": {
+      "description": "REQUIRED. SPDX identifier or an object for custom terms (same shape as the character pack). Packs without a license are refused at load time.",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        {
+          "type": "object",
+          "required": [
+            "name",
+            "url"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 64
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "commercial_use": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "space": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,31}$",
+      "description": "Space id (office, tax, school, warehouse, lab, lounge, or custom)."
+    },
+    "map": {
+      "type": "string",
+      "maxLength": 256,
+      "description": "Relative path to the Tiled JSON map."
+    },
+    "tilesets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 256
+      },
+      "description": "Relative image paths referenced by the map (must stay inside the pack folder)."
+    },
+    "markers": {
+      "type": "object",
+      "description": "Which Tiled object classes the map provides. Objects are matched by their `class`/`type` field; boards also need the custom property `board_kind`.",
+      "required": [
+        "desk",
+        "door"
+      ],
+      "properties": {
+        "desk": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of desk objects (assigned seats)."
+        },
+        "door": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "bench": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Overflow seats in the hallway."
+        },
+        "boss_desk": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "A spot that animation_overrides can name with go_to (optional). Characters that need the user wait where they are, so the engine does not send waiting_user here."
+        },
+        "coffee": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "board": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "lobby",
+              "whiteboard",
+              "server",
+              "timetable"
+            ]
+          },
+          "description": "board_kind values present. Text on boards is rendered by the engine with a crisp font, not by sprites."
+        }
+      }
+    },
+    "animation_overrides": {
+      "type": "object",
+      "description": "Per-state action/prop overrides for this room (state meaning never changes). Keys are states.",
+      "propertyNames": {
+        "enum": [
+          "idle",
+          "working",
+          "waiting_dependency",
+          "waiting_user",
+          "error",
+          "done",
+          "unknown",
+          "paused",
+          "cancelled"
+        ]
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "animation": {
+            "type": "string",
+            "maxLength": 64,
+            "description": "Alternative character animation tag if the character pack provides it (falls back to the standard tag)."
+          },
+          "prop": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Room prop id to show next to the character (e.g. calculator, stamp)."
+          },
+          "go_to": {
+            "type": "string",
+            "enum": [
+              "desk",
+              "boss_desk",
+              "door",
+              "coffee"
+            ],
+            "description": "Where the character moves for this state."
+          }
+        }
+      }
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "image"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "image": {
+            "type": "string",
+            "maxLength": 256
+          }
+        }
+      }
+    },
+    "lights": {
+      "type": "boolean",
+      "description": "Room dims when it has no active session."
+    },
+    "original_work": {
+      "type": "boolean"
+    }
+  }
+}

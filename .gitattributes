@@ -1,0 +1,4 @@
+# LF everywhere so generated files (docs/index.md) and fixtures compare equal on Windows checkouts.
+* text=auto eol=lf
+*.png binary
+*.jpg binary

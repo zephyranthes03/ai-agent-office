@@ -1,0 +1,412 @@
+{
+  "version": 1,
+  "purpose": "Private v4 cutout renderer assembly profiles; source PNGs unchanged. Tuned via real renderer captures; not a production character-pack manifest.",
+  "species": {
+    "dog": {
+      "frames": {
+        "head": {
+          "pivot": {
+            "x": 0.537,
+            "y": 0.9
+          },
+          "suggestedWidth": 72
+        },
+        "torso": {
+          "pivot": {
+            "x": 0.58,
+            "y": 0.87
+          },
+          "suggestedWidth": 74,
+          "seatSupport": {
+            "x": 0.58179887,
+            "y": 0.97142857
+          }
+        },
+        "nearArm": {
+          "pivot": {
+            "x": 0.386,
+            "y": 0.176
+          },
+          "suggestedWidth": 24,
+          "mirrorX": false
+        },
+        "farArm": {
+          "pivot": {
+            "x": 0.498,
+            "y": 0.176
+          },
+          "suggestedWidth": 23.52,
+          "mirrorX": false,
+          "perspectiveScale": 1
+        },
+        "nearLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 22
+        },
+        "farLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 20
+        }
+      },
+      "joints": {
+        "head": {
+          "x": 0.6,
+          "y": 0.168
+        },
+        "nearArm": {
+          "x": 0.42,
+          "y": 0.285
+        },
+        "farArm": {
+          "x": 0.76,
+          "y": 0.245
+        },
+        "nearLeg": {
+          "x": 0.47,
+          "y": 0.88
+        },
+        "farLeg": {
+          "x": 0.76,
+          "y": 0.88
+        }
+      },
+      "frontHeight": 68,
+      "frontHeadWidth": 70.56,
+      "coloredParts": [
+        "torso",
+        "nearArm",
+        "farArm"
+      ]
+    },
+    "rabbit": {
+      "frames": {
+        "head": {
+          "pivot": {
+            "x": 0.4702,
+            "y": 0.9
+          },
+          "suggestedWidth": 46
+        },
+        "torso": {
+          "pivot": {
+            "x": 0.57,
+            "y": 0.87
+          },
+          "suggestedWidth": 66,
+          "seatSupport": {
+            "x": 0.54689635,
+            "y": 0.96261682
+          }
+        },
+        "nearArm": {
+          "pivot": {
+            "x": 0.405,
+            "y": 0.189
+          },
+          "suggestedWidth": 21,
+          "mirrorX": false
+        },
+        "farArm": {
+          "pivot": {
+            "x": 0.34,
+            "y": 0.19
+          },
+          "suggestedWidth": 20.58,
+          "mirrorX": true,
+          "perspectiveScale": 1
+        },
+        "nearLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 19
+        },
+        "farLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 17
+        }
+      },
+      "joints": {
+        "head": {
+          "x": 0.549230303030303,
+          "y": 0.12
+        },
+        "nearArm": {
+          "x": 0.4,
+          "y": 0.285
+        },
+        "farArm": {
+          "x": 0.77,
+          "y": 0.25
+        },
+        "nearLeg": {
+          "x": 0.44999999999999996,
+          "y": 0.88
+        },
+        "farLeg": {
+          "x": 0.74,
+          "y": 0.88
+        }
+      },
+      "frontHeight": 68,
+      "frontHeadWidth": 45.08,
+      "coloredParts": [
+        "torso",
+        "nearArm",
+        "farArm"
+      ]
+    },
+    "fox": {
+      "frames": {
+        "head": {
+          "pivot": {
+            "x": 0.5226,
+            "y": 0.9
+          },
+          "suggestedWidth": 65
+        },
+        "torso": {
+          "pivot": {
+            "x": 0.7,
+            "y": 0.87
+          },
+          "suggestedWidth": 82,
+          "seatSupport": {
+            "x": 0.644171,
+            "y": 0.97163121
+          }
+        },
+        "nearArm": {
+          "pivot": {
+            "x": 0.349,
+            "y": 0.178
+          },
+          "suggestedWidth": 21,
+          "mirrorX": false
+        },
+        "farArm": {
+          "pivot": {
+            "x": 0.669,
+            "y": 0.177
+          },
+          "suggestedWidth": 20.58,
+          "mirrorX": false,
+          "perspectiveScale": 1
+        },
+        "nearLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 20
+        },
+        "farLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 18
+        }
+      },
+      "joints": {
+        "head": {
+          "x": 0.67,
+          "y": 0.12
+        },
+        "nearArm": {
+          "x": 0.46,
+          "y": 0.2
+        },
+        "farArm": {
+          "x": 0.765,
+          "y": 0.165
+        },
+        "nearLeg": {
+          "x": 0.58,
+          "y": 0.88
+        },
+        "farLeg": {
+          "x": 0.87,
+          "y": 0.88
+        }
+      },
+      "frontHeight": 68,
+      "frontHeadWidth": 72.4,
+      "coloredParts": [
+        "torso"
+      ]
+    },
+    "panda": {
+      "frames": {
+        "head": {
+          "pivot": {
+            "x": 0.5704,
+            "y": 0.9
+          },
+          "suggestedWidth": 68
+        },
+        "torso": {
+          "pivot": {
+            "x": 0.54,
+            "y": 0.87
+          },
+          "suggestedWidth": 68,
+          "seatSupport": {
+            "x": 0.54251491,
+            "y": 0.97553517
+          }
+        },
+        "nearArm": {
+          "pivot": {
+            "x": 0.318,
+            "y": 0.18
+          },
+          "suggestedWidth": 24,
+          "mirrorX": false
+        },
+        "farArm": {
+          "pivot": {
+            "x": 0.647,
+            "y": 0.182
+          },
+          "suggestedWidth": 23.52,
+          "mirrorX": false,
+          "perspectiveScale": 1
+        },
+        "nearLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 22
+        },
+        "farLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 20
+        }
+      },
+      "joints": {
+        "head": {
+          "x": 0.6204000000000001,
+          "y": 0.138
+        },
+        "nearArm": {
+          "x": 0.34,
+          "y": 0.23
+        },
+        "farArm": {
+          "x": 0.725,
+          "y": 0.195
+        },
+        "nearLeg": {
+          "x": 0.43000000000000005,
+          "y": 0.88
+        },
+        "farLeg": {
+          "x": 0.7200000000000001,
+          "y": 0.88
+        }
+      },
+      "frontHeight": 68,
+      "frontHeadWidth": 66.64,
+      "coloredParts": [
+        "torso",
+        "nearArm",
+        "farArm"
+      ]
+    },
+    "hedgehog": {
+      "frames": {
+        "head": {
+          "pivot": {
+            "x": 0.5585,
+            "y": 0.9
+          },
+          "suggestedWidth": 65
+        },
+        "torso": {
+          "pivot": {
+            "x": 0.66,
+            "y": 0.87
+          },
+          "suggestedWidth": 72,
+          "seatSupport": {
+            "x": 0.58802718,
+            "y": 0.97790055
+          }
+        },
+        "nearArm": {
+          "pivot": {
+            "x": 0.354,
+            "y": 0.186
+          },
+          "suggestedWidth": 20,
+          "mirrorX": false
+        },
+        "farArm": {
+          "pivot": {
+            "x": 0.376,
+            "y": 0.184
+          },
+          "suggestedWidth": 19.6,
+          "mirrorX": true,
+          "perspectiveScale": 1
+        },
+        "nearLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 18
+        },
+        "farLeg": {
+          "pivot": {
+            "x": 0.45,
+            "y": 0.14
+          },
+          "suggestedWidth": 16
+        }
+      },
+      "joints": {
+        "head": {
+          "x": 0.6678125,
+          "y": 0.325
+        },
+        "nearArm": {
+          "x": 0.44,
+          "y": 0.45
+        },
+        "farArm": {
+          "x": 0.79,
+          "y": 0.41
+        },
+        "nearLeg": {
+          "x": 0.54,
+          "y": 0.88
+        },
+        "farLeg": {
+          "x": 0.8300000000000001,
+          "y": 0.88
+        }
+      },
+      "frontHeight": 68,
+      "frontHeadWidth": 63.699999999999996,
+      "coloredParts": [
+        "torso"
+      ]
+    }
+  }
+}

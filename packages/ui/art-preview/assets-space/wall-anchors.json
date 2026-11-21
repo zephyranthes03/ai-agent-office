@@ -1,0 +1,69 @@
+{
+ "purpose": "Measured plaster-wall anchors for the current v5 room shell; private visual alignment fixture, not a room pack schema.",
+ "image": "../assets-walls/plaster-south-v2.png",
+ "size": {
+  "width": 1774,
+  "height": 887
+ },
+ "anchors": {
+  "board": [
+   [
+    120,
+    261.25
+   ],
+   [
+    335,
+    160.2
+   ],
+   [
+    335,
+    272.7
+   ],
+   [
+    120,
+    373.75
+   ]
+  ],
+  "rewards": [
+   [
+    1439,
+    160.2
+   ],
+   [
+    1654,
+    261.25
+   ],
+   [
+    1654,
+    373.75
+   ],
+   [
+    1439,
+    272.7
+   ]
+  ]
+ },
+ "landmarks": [
+  {
+   "x": 120,
+   "rimY": 242,
+   "baseboardY": 411
+  },
+  {
+   "x": 1654,
+   "rimY": 243,
+   "baseboardY": 412
+  },
+  {
+   "x": 335,
+   "rimY": 142,
+   "baseboardY": 314
+  },
+  {
+   "x": 1439,
+   "rimY": 142,
+   "baseboardY": 316
+  }
+ ],
+ "measurement": "A fixed physical mounting plane on each full diagonal plaster face. Source x120..335 and common slope-0.47 are centered outward/downward; every measured column on both mirrored faces keeps at least18px top/bottom clearance. Both vertical source bands use the same0.819924scale. Content projects directly onto the authored plane instead of shrinking again to its DOM aspect ratio."
+}

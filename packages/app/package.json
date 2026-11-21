@@ -1,0 +1,17 @@
+{
+  "name": "@agent-office/app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The desktop app (Electron): starts or joins the local daemon, shows the browser UI in a window, keeps a tray icon with the count of sessions that need you, and raises clickable notifications.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/main.ts",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "dependencies": {
+    "@agent-office/cli": "0.0.0",
+    "@agent-office/daemon": "0.0.0",
+    "@agent-office/ui": "0.0.0"
+  }
+}

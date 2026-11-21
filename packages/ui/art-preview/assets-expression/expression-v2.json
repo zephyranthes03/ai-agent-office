@@ -1,0 +1,360 @@
+{
+  "version": 2,
+  "image": "./assets-expression/expression-v2.png",
+  "scale": 0.75,
+  "coordinateSystem": "rect: atlas pixels; crop: the frame's extent in the source head crop's pixels (negative where turned ears reach past it)",
+  "species": {
+    "otter": {
+      "tired": {
+        "rect": {
+          "x": 8,
+          "y": 8,
+          "width": 339,
+          "height": 247
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 451,
+          "height": 329
+        }
+      },
+      "tiredClosed": {
+        "rect": {
+          "x": 355,
+          "y": 8,
+          "width": 339,
+          "height": 247
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 451,
+          "height": 329
+        }
+      },
+      "blank": {
+        "rect": {
+          "x": 702,
+          "y": 8,
+          "width": 339,
+          "height": 247
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 451,
+          "height": 329
+        }
+      }
+    },
+    "cat": {
+      "tired": {
+        "rect": {
+          "x": 8,
+          "y": 263,
+          "width": 371,
+          "height": 308
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 494,
+          "height": 410
+        }
+      },
+      "tiredClosed": {
+        "rect": {
+          "x": 387,
+          "y": 263,
+          "width": 371,
+          "height": 308
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 494,
+          "height": 410
+        }
+      },
+      "blank": {
+        "rect": {
+          "x": 766,
+          "y": 263,
+          "width": 371,
+          "height": 308
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 494,
+          "height": 410
+        }
+      }
+    },
+    "bird": {
+      "tired": {
+        "rect": {
+          "x": 8,
+          "y": 579,
+          "width": 330,
+          "height": 300
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 439,
+          "height": 400
+        }
+      },
+      "tiredClosed": {
+        "rect": {
+          "x": 346,
+          "y": 579,
+          "width": 330,
+          "height": 300
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 439,
+          "height": 400
+        }
+      },
+      "blank": {
+        "rect": {
+          "x": 684,
+          "y": 579,
+          "width": 330,
+          "height": 300
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 439,
+          "height": 400
+        }
+      }
+    },
+    "dog": {
+      "tired": {
+        "rect": {
+          "x": 8,
+          "y": 887,
+          "width": 272,
+          "height": 201
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 362,
+          "height": 268
+        }
+      },
+      "tiredClosed": {
+        "rect": {
+          "x": 288,
+          "y": 887,
+          "width": 272,
+          "height": 201
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 362,
+          "height": 268
+        }
+      },
+      "blank": {
+        "rect": {
+          "x": 568,
+          "y": 887,
+          "width": 272,
+          "height": 201
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 362,
+          "height": 268
+        }
+      }
+    },
+    "rabbit": {
+      "tired": {
+        "rect": {
+          "x": 8,
+          "y": 1096,
+          "width": 213,
+          "height": 226
+        },
+        "crop": {
+          "x": -34,
+          "y": 0,
+          "width": 283,
+          "height": 301
+        }
+      },
+      "tiredClosed": {
+        "rect": {
+          "x": 229,
+          "y": 1096,
+          "width": 213,
+          "height": 226
+        },
+        "crop": {
+          "x": -34,
+          "y": 0,
+          "width": 283,
+          "height": 301
+        }
+      },
+      "blank": {
+        "rect": {
+          "x": 450,
+          "y": 1096,
+          "width": 187,
+          "height": 226
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 249,
+          "height": 301
+        }
+      }
+    },
+    "fox": {
+      "tired": {
+        "rect": {
+          "x": 8,
+          "y": 1330,
+          "width": 285,
+          "height": 273
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 379,
+          "height": 363
+        }
+      },
+      "tiredClosed": {
+        "rect": {
+          "x": 301,
+          "y": 1330,
+          "width": 285,
+          "height": 273
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 379,
+          "height": 363
+        }
+      },
+      "blank": {
+        "rect": {
+          "x": 594,
+          "y": 1330,
+          "width": 285,
+          "height": 273
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 379,
+          "height": 363
+        }
+      }
+    },
+    "panda": {
+      "tired": {
+        "rect": {
+          "x": 8,
+          "y": 1611,
+          "width": 267,
+          "height": 250
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 356,
+          "height": 333
+        }
+      },
+      "tiredClosed": {
+        "rect": {
+          "x": 283,
+          "y": 1611,
+          "width": 267,
+          "height": 250
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 356,
+          "height": 333
+        }
+      },
+      "blank": {
+        "rect": {
+          "x": 558,
+          "y": 1611,
+          "width": 267,
+          "height": 250
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 356,
+          "height": 333
+        }
+      }
+    },
+    "hedgehog": {
+      "tired": {
+        "rect": {
+          "x": 8,
+          "y": 1869,
+          "width": 279,
+          "height": 243
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 371,
+          "height": 323
+        }
+      },
+      "tiredClosed": {
+        "rect": {
+          "x": 295,
+          "y": 1869,
+          "width": 279,
+          "height": 243
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 371,
+          "height": 323
+        }
+      },
+      "blank": {
+        "rect": {
+          "x": 582,
+          "y": 1869,
+          "width": 279,
+          "height": 243
+        },
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 371,
+          "height": 323
+        }
+      }
+    }
+  }
+}

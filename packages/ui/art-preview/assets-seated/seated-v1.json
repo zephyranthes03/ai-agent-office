@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "purpose": "Private v5 seated lower-body artwork; not a production character-pack format.",
+  "image": "seated-v1.png",
+  "width": 1774,
+  "height": 887,
+  "sha256": "7a5d91bff7f4173f7084b9bb7f8bb0663b80a4e3e6fef9fd756dde8826e24b6b",
+  "generator": "Built-in image_gen",
+  "prompt": "seated-v1.prompt.txt",
+  "orientation": "Three-quarter right facing; mirror pixels and all anchors together.",
+  "measurement": "Principal alpha>=128 component per observed sprite. Rear support is its lowest edge in the posterior 30 percent. Soles are independently measured from the two largest alpha>=16 components below 70 percent height. Original PNG bytes and alpha are preserved.",
+  "frames": {
+    "cat": {
+      "rect": {
+        "x": 43,
+        "y": 41,
+        "width": 395,
+        "height": 376
+      },
+      "solidBounds": {
+        "x": 51,
+        "y": 49,
+        "width": 379,
+        "height": 360
+      },
+      "buttContact": {
+        "x": 161.0625,
+        "y": 270,
+        "left": 155.0,
+        "right": 165.0
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 279.4569892473118,
+          "y": 409,
+          "left": 255.0,
+          "right": 298.0
+        },
+        "farLeg": {
+          "x": 389.9761904761905,
+          "y": 379,
+          "left": 369.0,
+          "right": 406.0
+        }
+      },
+      "suggestedWidth": 61
+    },
+    "otter": {
+      "rect": {
+        "x": 492,
+        "y": 43,
+        "width": 389,
+        "height": 375
+      },
+      "solidBounds": {
+        "x": 500,
+        "y": 51,
+        "width": 373,
+        "height": 359
+      },
+      "buttContact": {
+        "x": 602.7954545454545,
+        "y": 269,
+        "left": 589.0,
+        "right": 612.0
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 735.4480519480519,
+          "y": 410,
+          "left": 713.0,
+          "right": 751.0
+        },
+        "farLeg": {
+          "x": 834.2916666666666,
+          "y": 378,
+          "left": 815.0,
+          "right": 849.0
+        }
+      },
+      "suggestedWidth": 60
+    },
+    "bird": {
+      "rect": {
+        "x": 932,
+        "y": 43,
+        "width": 393,
+        "height": 379
+      },
+      "solidBounds": {
+        "x": 940,
+        "y": 51,
+        "width": 377,
+        "height": 363
+      },
+      "buttContact": {
+        "x": 1049.65,
+        "y": 271,
+        "left": 1043.0,
+        "right": 1054.0
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 1182.2058823529412,
+          "y": 414,
+          "left": 1179.0,
+          "right": 1186.0
+        },
+        "farLeg": {
+          "x": 1276.7142857142858,
+          "y": 387,
+          "left": 1274.0,
+          "right": 1280.0
+        }
+      },
+      "suggestedWidth": 56
+    },
+    "dog": {
+      "rect": {
+        "x": 1375,
+        "y": 40,
+        "width": 382,
+        "height": 382
+      },
+      "solidBounds": {
+        "x": 1383,
+        "y": 48,
+        "width": 366,
+        "height": 366
+      },
+      "buttContact": {
+        "x": 1483.02,
+        "y": 270,
+        "left": 1468.0,
+        "right": 1493.0
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 1611.948275862069,
+          "y": 414,
+          "left": 1588.0,
+          "right": 1630.0
+        },
+        "farLeg": {
+          "x": 1711.3474576271187,
+          "y": 386,
+          "left": 1692.0,
+          "right": 1726.0
+        }
+      },
+      "suggestedWidth": 55
+    },
+    "rabbit": {
+      "rect": {
+        "x": 42,
+        "y": 472,
+        "width": 394,
+        "height": 380
+      },
+      "solidBounds": {
+        "x": 50,
+        "y": 480,
+        "width": 378,
+        "height": 364
+      },
+      "buttContact": {
+        "x": 145.2263157894737,
+        "y": 695,
+        "left": 122.0,
+        "right": 164.0
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 282.52061855670104,
+          "y": 844,
+          "left": 258.0,
+          "right": 302.0
+        },
+        "farLeg": {
+          "x": 387.9157303370786,
+          "y": 817,
+          "left": 366.0,
+          "right": 407.0
+        }
+      },
+      "suggestedWidth": 50
+    },
+    "fox": {
+      "rect": {
+        "x": 481,
+        "y": 469,
+        "width": 403,
+        "height": 381
+      },
+      "solidBounds": {
+        "x": 489,
+        "y": 477,
+        "width": 387,
+        "height": 365
+      },
+      "buttContact": {
+        "x": 592.0555555555555,
+        "y": 696,
+        "left": 573.0,
+        "right": 606.0
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 729.5701754385965,
+          "y": 842,
+          "left": 705.0,
+          "right": 752.0
+        },
+        "farLeg": {
+          "x": 833.9642857142857,
+          "y": 814,
+          "left": 813.0,
+          "right": 852.0
+        }
+      },
+      "suggestedWidth": 61
+    },
+    "panda": {
+      "rect": {
+        "x": 926,
+        "y": 472,
+        "width": 398,
+        "height": 371
+      },
+      "solidBounds": {
+        "x": 934,
+        "y": 480,
+        "width": 382,
+        "height": 355
+      },
+      "buttContact": {
+        "x": 1037.9035087719299,
+        "y": 702,
+        "left": 1021.0,
+        "right": 1049.0
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 1159.0196850393702,
+          "y": 835,
+          "left": 1133.0,
+          "right": 1183.0
+        },
+        "farLeg": {
+          "x": 1270.86,
+          "y": 804,
+          "left": 1251.0,
+          "right": 1289.0
+        }
+      },
+      "suggestedWidth": 51
+    },
+    "hedgehog": {
+      "rect": {
+        "x": 1373,
+        "y": 473,
+        "width": 379,
+        "height": 359
+      },
+      "solidBounds": {
+        "x": 1381,
+        "y": 481,
+        "width": 363,
+        "height": 343
+      },
+      "buttContact": {
+        "x": 1477.9666666666667,
+        "y": 707,
+        "left": 1460.0,
+        "right": 1490.0
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 1606.2758620689656,
+          "y": 824,
+          "left": 1584.0,
+          "right": 1627.0
+        },
+        "farLeg": {
+          "x": 1711.0072463768115,
+          "y": 799,
+          "left": 1693.0,
+          "right": 1728.0
+        }
+      },
+      "suggestedWidth": 54
+    }
+  }
+}

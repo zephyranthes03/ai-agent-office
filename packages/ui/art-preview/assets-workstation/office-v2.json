@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "purpose": "Private v5 office desk and chair sprites; not a production pack schema.",
+  "image": "office-v2.png",
+  "width": 1254,
+  "height": 1254,
+  "sha256": "ff45ed84f97db824cdb5b92e9add959315b7e4fb9a753c1f972c39c894a8ffab",
+  "generator": "Built-in image_gen",
+  "prompt": "office-v2.prompt.txt",
+  "orientation": "Users sit beyond the rear tabletop edge. Observer-facing front is plain; no exposed control panel. Laptop uses the separate existing opaque back sprite.",
+  "cropPolicy": "Observed isolated object bounds with padding; original PNG and alpha bytes preserved.",
+  "frames": {
+    "desk": {
+      "rect": {
+        "x": 62,
+        "y": 168,
+        "width": 1129,
+        "height": 417
+      },
+      "solidBounds": {
+        "x": 70,
+        "y": 176,
+        "width": 1113,
+        "height": 401
+      },
+      "displayHeight": 200,
+      "anchors": {
+        "groundBottom": {
+          "x": 626,
+          "y": 577
+        },
+        "surfaceCenter": {
+          "x": 626,
+          "y": 230
+        }
+      },
+      "sourceSurfacePolygon": [
+        {
+          "x": 176,
+          "y": 181
+        },
+        {
+          "x": 1077,
+          "y": 181
+        },
+        {
+          "x": 1173,
+          "y": 278
+        },
+        {
+          "x": 82,
+          "y": 278
+        }
+      ]
+    },
+    "chair": {
+      "rect": {
+        "x": 816,
+        "y": 675,
+        "width": 398,
+        "height": 527
+      },
+      "solidBounds": {
+        "x": 824,
+        "y": 683,
+        "width": 382,
+        "height": 511
+      },
+      "displayWidth": 118,
+      "displayHeight": 150,
+      "anchors": {
+        "seat": {
+          "x": 1033,
+          "y": 953
+        },
+        "groundBottom": {
+          "x": 1023,
+          "y": 1194
+        }
+      }
+    }
+  }
+}

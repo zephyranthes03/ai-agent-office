@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "image": "workstation-back-v1.png",
+  "source": "workstation-v2.png",
+  "usage": "Use only the existing laptop crop; keep desk and lamp sourced from workstation-v2.png. Back lid facing viewer, tiny power indicator; no screen contents.",
+  "rect": {
+    "x": 813,
+    "y": 253,
+    "width": 400,
+    "height": 294
+  },
+  "anchors": "Inherited from parts.json laptop; same keyboard projection.",
+  "inspection": {
+    "workstation-v2.png": {
+      "size": [
+        1254,
+        1254
+      ],
+      "laptopLocalBounds": [
+        8,
+        8,
+        392,
+        286
+      ],
+      "sha256": "d47162115b86f94bae6283146c546aee51747fcea7bb4f685d9b1b660c30a197",
+      "keyAlpha": {
+        "(900, 478)": 254,
+        "(975, 476)": 253
+      }
+    },
+    "workstation-back-v1.png": {
+      "size": [
+        1254,
+        1254
+      ],
+      "laptopLocalBounds": [
+        7,
+        7,
+        395,
+        287
+      ],
+      "sha256": "f0dd5981df6902658f8ea0eab1a37d1ec6424284439481ecfc50825bbb11b285",
+      "keyAlpha": {
+        "(900, 478)": 254,
+        "(975, 476)": 254
+      }
+    }
+  },
+  "generation": "Built-in imagegen edit; original output PNG bytes and transparency preserved; no postprocessing."
+}

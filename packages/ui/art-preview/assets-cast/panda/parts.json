@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "species": "panda",
+  "image": "atlas-v1.png",
+  "mask": "garment-mask-v1.png",
+  "width": 1254,
+  "height": 1254,
+  "coordinateSystem": "source pixels",
+  "cropPolicy": "Four-connected components with alpha>=16 and >1000 pixels. Each measured solidBounds is expanded by 8 source pixels for rect, clamped to the image. Source PNG is unchanged. Components were mapped to visually inspected 3x3 parts.",
+  "facing": "right",
+  "frames": {
+    "head": {
+      "rect": {
+        "x": 52,
+        "y": 97,
+        "width": 356,
+        "height": 333
+      },
+      "solidBounds": {
+        "x": 60,
+        "y": 105,
+        "width": 340,
+        "height": 317
+      },
+      "connectedAlphaPixels": 81297
+    },
+    "torso": {
+      "rect": {
+        "x": 462,
+        "y": 128,
+        "width": 395,
+        "height": 327
+      },
+      "solidBounds": {
+        "x": 470,
+        "y": 136,
+        "width": 379,
+        "height": 311
+      },
+      "connectedAlphaPixels": 87484
+    },
+    "nearArm": {
+      "rect": {
+        "x": 947,
+        "y": 124,
+        "width": 248,
+        "height": 301
+      },
+      "solidBounds": {
+        "x": 955,
+        "y": 132,
+        "width": 232,
+        "height": 285
+      },
+      "connectedAlphaPixels": 38375
+    },
+    "farArm": {
+      "rect": {
+        "x": 111,
+        "y": 513,
+        "width": 195,
+        "height": 256
+      },
+      "solidBounds": {
+        "x": 119,
+        "y": 521,
+        "width": 179,
+        "height": 240
+      },
+      "connectedAlphaPixels": 27204
+    },
+    "nearLeg": {
+      "rect": {
+        "x": 550,
+        "y": 535,
+        "width": 195,
+        "height": 247
+      },
+      "solidBounds": {
+        "x": 558,
+        "y": 543,
+        "width": 179,
+        "height": 231
+      },
+      "connectedAlphaPixels": 33202
+    },
+    "farLeg": {
+      "rect": {
+        "x": 972,
+        "y": 547,
+        "width": 195,
+        "height": 222
+      },
+      "solidBounds": {
+        "x": 980,
+        "y": 555,
+        "width": 179,
+        "height": 206
+      },
+      "connectedAlphaPixels": 25269
+    },
+    "blink": {
+      "rect": {
+        "x": 45,
+        "y": 859,
+        "width": 362,
+        "height": 339
+      },
+      "solidBounds": {
+        "x": 53,
+        "y": 867,
+        "width": 346,
+        "height": 323
+      },
+      "connectedAlphaPixels": 85005
+    },
+    "front": {
+      "rect": {
+        "x": 446,
+        "y": 854,
+        "width": 353,
+        "height": 337
+      },
+      "solidBounds": {
+        "x": 454,
+        "y": 862,
+        "width": 337,
+        "height": 321
+      },
+      "connectedAlphaPixels": 85587
+    },
+    "frontBody": {
+      "rect": {
+        "x": 830,
+        "y": 842,
+        "width": 407,
+        "height": 356
+      },
+      "solidBounds": {
+        "x": 838,
+        "y": 850,
+        "width": 391,
+        "height": 340
+      },
+      "connectedAlphaPixels": 95388
+    }
+  },
+  "jointsStatus": "unverified; parent owns rig-profile.json and runtime tuning",
+  "maskStatus": "unverified exact semantic registration",
+  "notes": [
+    "Raw generated PNG bytes and alpha preserved; no pixel editing or crop/repaint applied.",
+    "Actual canvas is 1254x1254 rather than requested preferred 1536x1536.",
+    "Some parts exceed requested 350px extent and/or 80px nominal cell margins; use measured global-component rectangles, not fixed grid cell crops.",
+    "Opaque-interior alpha255 requirement was not achieved; predominant atlas alpha is 253 and mask alpha is 254.",
+    "Garment masks are generated candidates. Canvas equality and silhouette containment metrics do not prove exact semantic fabric boundary registration.",
+    "Pivots, joints, widths, foot contacts, neck joins, turn transitions, garment recoloring, selection bounds and all procedural action playback remain unverified pending parent runtime integration.",
+    "Open head and blink head source bounds differ by 6px in width and height; runtime sizing/neck alignment needs inspection."
+  ]
+}

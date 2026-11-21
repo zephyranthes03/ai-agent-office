@@ -1,0 +1,470 @@
+{
+  "version": 1,
+  "purpose": "Private v5 compact, species-specific relaxed lower-body sprites; not a production character-pack schema.",
+  "image": "seated-v3.png",
+  "width": 1774,
+  "height": 887,
+  "sha256": "375e596efbd2fd9faa2b24271d1623f43f095767d39e747fa0915df44e77a9b6",
+  "generator": "Built-in image_gen",
+  "prompt": "seated-v3.prompt.txt",
+  "orientation": "Three-quarter right facing; mirror source pixels and measured anchors together.",
+  "measurement": "Main alpha>=128 component for the sprite. Rump support is the bottom edge of its posterior 22 percent. Each paw sole is independently measured from alpha>=16 in an observed footRegion, because touching or crossed paws need not form separate connected components. Original PNG and alpha bytes preserved.",
+  "frames": {
+    "cat": {
+      "rect": {
+        "x": 70,
+        "y": 86,
+        "width": 328,
+        "height": 334
+      },
+      "solidBounds": {
+        "x": 78,
+        "y": 94,
+        "width": 312,
+        "height": 318
+      },
+      "contactRegion": {
+        "x": 78,
+        "y": 94,
+        "width": 69,
+        "height": 318
+      },
+      "buttContact": {
+        "x": 143.5,
+        "y": 308,
+        "left": 138.0,
+        "right": 147.0
+      },
+      "footRegions": {
+        "nearLeg": {
+          "x": 195,
+          "y": 360,
+          "width": 111,
+          "height": 54
+        },
+        "farLeg": {
+          "x": 324,
+          "y": 340,
+          "width": 65,
+          "height": 70
+        }
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 266.0,
+          "y": 413,
+          "left": 245.0,
+          "right": 287.0
+        },
+        "farLeg": {
+          "x": 341.75555555555553,
+          "y": 387,
+          "left": 324.0,
+          "right": 360.0
+        }
+      },
+      "restStyle": "paws-together",
+      "suggestedWidth": 61,
+      "attachmentOffsetX": -13.5
+    },
+    "otter": {
+      "rect": {
+        "x": 498,
+        "y": 95,
+        "width": 413,
+        "height": 306
+      },
+      "solidBounds": {
+        "x": 506,
+        "y": 103,
+        "width": 397,
+        "height": 290
+      },
+      "contactRegion": {
+        "x": 506,
+        "y": 103,
+        "width": 87,
+        "height": 290
+      },
+      "buttContact": {
+        "x": 589.05,
+        "y": 322,
+        "left": 583.0,
+        "right": 593.0
+      },
+      "footRegions": {
+        "nearLeg": {
+          "x": 631,
+          "y": 345,
+          "width": 174,
+          "height": 51
+        },
+        "farLeg": {
+          "x": 802,
+          "y": 309,
+          "width": 102,
+          "height": 62
+        }
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 748.2596153846154,
+          "y": 394,
+          "left": 725.0,
+          "right": 771.0
+        },
+        "farLeg": {
+          "x": 843.4649122807018,
+          "y": 368,
+          "left": 829.0,
+          "right": 857.0
+        }
+      },
+      "restStyle": "feet-forward",
+      "suggestedWidth": 66,
+      "attachmentOffsetX": -9.9
+    },
+    "bird": {
+      "rect": {
+        "x": 951,
+        "y": 101,
+        "width": 346,
+        "height": 315
+      },
+      "solidBounds": {
+        "x": 959,
+        "y": 109,
+        "width": 330,
+        "height": 299
+      },
+      "contactRegion": {
+        "x": 959,
+        "y": 109,
+        "width": 73,
+        "height": 299
+      },
+      "buttContact": {
+        "x": 1030.1,
+        "y": 320,
+        "left": 1027.0,
+        "right": 1032.0
+      },
+      "footRegions": {
+        "nearLeg": {
+          "x": 1080,
+          "y": 335,
+          "width": 110,
+          "height": 75
+        },
+        "farLeg": {
+          "x": 1190,
+          "y": 335,
+          "width": 75,
+          "height": 55
+        }
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 1142.4285714285713,
+          "y": 409,
+          "left": 1139.0,
+          "right": 1146.0
+        },
+        "farLeg": {
+          "x": 1220.6052631578948,
+          "y": 388,
+          "left": 1217.0,
+          "right": 1225.0
+        }
+      },
+      "restStyle": "tiny-dangle",
+      "suggestedWidth": 56,
+      "attachmentOffsetX": 8
+    },
+    "dog": {
+      "rect": {
+        "x": 1393,
+        "y": 86,
+        "width": 334,
+        "height": 336
+      },
+      "solidBounds": {
+        "x": 1401,
+        "y": 94,
+        "width": 318,
+        "height": 320
+      },
+      "contactRegion": {
+        "x": 1401,
+        "y": 94,
+        "width": 70,
+        "height": 320
+      },
+      "buttContact": {
+        "x": 1467.1842105263158,
+        "y": 311,
+        "left": 1461.0,
+        "right": 1471.0
+      },
+      "footRegions": {
+        "nearLeg": {
+          "x": 1490,
+          "y": 350,
+          "width": 114,
+          "height": 67
+        },
+        "farLeg": {
+          "x": 1604,
+          "y": 332,
+          "width": 118,
+          "height": 59
+        }
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 1552.7962962962963,
+          "y": 415,
+          "left": 1532.0,
+          "right": 1571.0
+        },
+        "farLeg": {
+          "x": 1672.0192307692307,
+          "y": 388,
+          "left": 1649.0,
+          "right": 1694.0
+        }
+      },
+      "restStyle": "one-forward",
+      "suggestedWidth": 55,
+      "attachmentOffsetX": -14.6
+    },
+    "rabbit": {
+      "rect": {
+        "x": 69,
+        "y": 484,
+        "width": 408,
+        "height": 335
+      },
+      "solidBounds": {
+        "x": 77,
+        "y": 492,
+        "width": 392,
+        "height": 319
+      },
+      "contactRegion": {
+        "x": 77,
+        "y": 492,
+        "width": 86,
+        "height": 319
+      },
+      "buttContact": {
+        "x": 157.78571428571428,
+        "y": 719,
+        "left": 150.0,
+        "right": 163.0
+      },
+      "footRegions": {
+        "nearLeg": {
+          "x": 171,
+          "y": 760,
+          "width": 172,
+          "height": 54
+        },
+        "farLeg": {
+          "x": 371,
+          "y": 715,
+          "width": 101,
+          "height": 100
+        }
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 295.8228346456693,
+          "y": 812,
+          "left": 267.0,
+          "right": 322.0
+        },
+        "farLeg": {
+          "x": 412.50840336134456,
+          "y": 790,
+          "left": 386.0,
+          "right": 437.0
+        }
+      },
+      "restStyle": "long-paws-forward",
+      "suggestedWidth": 57,
+      "attachmentOffsetX": -10.5
+    },
+    "fox": {
+      "rect": {
+        "x": 508,
+        "y": 488,
+        "width": 399,
+        "height": 336
+      },
+      "solidBounds": {
+        "x": 516,
+        "y": 496,
+        "width": 383,
+        "height": 320
+      },
+      "contactRegion": {
+        "x": 516,
+        "y": 496,
+        "width": 84,
+        "height": 320
+      },
+      "buttContact": {
+        "x": 596.1842105263158,
+        "y": 722,
+        "left": 590.0,
+        "right": 600.0
+      },
+      "footRegions": {
+        "nearLeg": {
+          "x": 636,
+          "y": 768,
+          "width": 162,
+          "height": 51
+        },
+        "farLeg": {
+          "x": 798,
+          "y": 745,
+          "width": 104,
+          "height": 49
+        }
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 738.9432989690722,
+          "y": 817,
+          "left": 717.0,
+          "right": 763.0
+        },
+        "farLeg": {
+          "x": 851.3354430379746,
+          "y": 790,
+          "left": 831.0,
+          "right": 872.0
+        }
+      },
+      "restStyle": "relaxed-asymmetry",
+      "suggestedWidth": 61,
+      "attachmentOffsetX": -10.5
+    },
+    "panda": {
+      "rect": {
+        "x": 947,
+        "y": 492,
+        "width": 426,
+        "height": 325
+      },
+      "solidBounds": {
+        "x": 955,
+        "y": 500,
+        "width": 410,
+        "height": 309
+      },
+      "contactRegion": {
+        "x": 955,
+        "y": 500,
+        "width": 90,
+        "height": 309
+      },
+      "buttContact": {
+        "x": 1037.5526315789473,
+        "y": 740,
+        "left": 1026.0,
+        "right": 1045.0
+      },
+      "footRegions": {
+        "nearLeg": {
+          "x": 1048,
+          "y": 747,
+          "width": 157,
+          "height": 65
+        },
+        "farLeg": {
+          "x": 1210,
+          "y": 728,
+          "width": 159,
+          "height": 67
+        }
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 1123.7625,
+          "y": 810,
+          "left": 1105.0,
+          "right": 1144.0
+        },
+        "farLeg": {
+          "x": 1291.625,
+          "y": 792,
+          "left": 1272.0,
+          "right": 1311.0
+        }
+      },
+      "restStyle": "round-soles-out",
+      "suggestedWidth": 60,
+      "attachmentOffsetX": -12.5
+    },
+    "hedgehog": {
+      "rect": {
+        "x": 1400,
+        "y": 501,
+        "width": 329,
+        "height": 304
+      },
+      "solidBounds": {
+        "x": 1408,
+        "y": 509,
+        "width": 313,
+        "height": 288
+      },
+      "contactRegion": {
+        "x": 1408,
+        "y": 509,
+        "width": 69,
+        "height": 288
+      },
+      "buttContact": {
+        "x": 1475.375,
+        "y": 733,
+        "left": 1473.0,
+        "right": 1477.0
+      },
+      "footRegions": {
+        "nearLeg": {
+          "x": 1513,
+          "y": 754,
+          "width": 98,
+          "height": 46
+        },
+        "farLeg": {
+          "x": 1630,
+          "y": 744,
+          "width": 79,
+          "height": 61
+        }
+      },
+      "feet": {
+        "nearLeg": {
+          "x": 1585.5444444444445,
+          "y": 798,
+          "left": 1565.0,
+          "right": 1606.0
+        },
+        "farLeg": {
+          "x": 1660.8444444444444,
+          "y": 782,
+          "left": 1640.0,
+          "right": 1680.0
+        }
+      },
+      "restStyle": "tiny-tuck",
+      "suggestedWidth": 54,
+      "attachmentOffsetX": -17.8
+    }
+  }
+}

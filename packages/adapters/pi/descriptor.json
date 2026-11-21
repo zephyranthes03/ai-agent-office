@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "pi",
+  "name": "pi",
+  "versions_tested": [
+    "1.5.0"
+  ],
+  "process_names": [
+    "pi"
+  ],
+  "strategies": [
+    {
+      "kind": "hook",
+      "provides": [
+        "state",
+        "identity"
+      ],
+      "note": "Primary. An extension file in ~/.pi/agent/extensions (PI_CODING_AGENT_DIR honoured) reads named fields of the events it subscribes to; prompts, tool inputs and outputs are never touched, and pi's settings are not edited."
+    },
+    {
+      "kind": "optional_external",
+      "provides": [
+        "schedule"
+      ],
+      "reads": [],
+      "max_read_bytes": 1048576,
+      "allowlisted_keys": [],
+      "note": "No native scheduler source exposed by the pi coding agent. Reports unsupported/no_native_scheduler. Extensions and the separate Durable SDK require their own identified contract; no files or credentials read."
+    }
+  ],
+  "hook_events": [
+    "session_start",
+    "session_shutdown",
+    "agent_start",
+    "tool_execution_start",
+    "tool_execution_end",
+    "ui_prompt_start",
+    "ui_prompt_end",
+    "agent_settled"
+  ],
+  "tool_classes": {},
+  "open": [],
+  "controls": [],
+  "schedule": [],
+  "permissions": {
+    "read_paths": [],
+    "write_paths": [
+      "~/.pi/agent/extensions/agent-office.js"
+    ],
+    "network": [],
+    "spawn": []
+  }
+}

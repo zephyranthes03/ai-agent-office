@@ -1,0 +1,22 @@
+{
+  "name": "@agent-office/ui",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The browser UI: the office scene beside the session list, served by the daemon and fed by its loopback HTTP/SSE API.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./sse": "./src/sse.ts",
+    "./model": "./src/model.ts",
+    "./format": "./src/format.ts",
+    "./i18n": "./src/i18n/index.ts",
+    "./notice": "./src/notice.ts",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "devDependencies": {
+    "@agent-office/core": "0.0.0"
+  }
+}

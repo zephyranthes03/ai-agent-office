@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "species": "fox",
+  "image": "atlas-v1.png",
+  "mask": "garment-mask-v1.png",
+  "width": 1254,
+  "height": 1254,
+  "coordinateSystem": "source pixels",
+  "cropPolicy": "Four-connected components with alpha>=16 and >1000 pixels. Each measured solidBounds is expanded by 8 source pixels for rect, clamped to the image. Source PNG is unchanged. Components were mapped to visually inspected 3x3 parts.",
+  "facing": "right",
+  "frames": {
+    "head": {
+      "rect": {
+        "x": 57,
+        "y": 44,
+        "width": 379,
+        "height": 363
+      },
+      "solidBounds": {
+        "x": 65,
+        "y": 52,
+        "width": 363,
+        "height": 347
+      },
+      "connectedAlphaPixels": 75852
+    },
+    "torso": {
+      "rect": {
+        "x": 454,
+        "y": 116,
+        "width": 391,
+        "height": 282
+      },
+      "solidBounds": {
+        "x": 462,
+        "y": 124,
+        "width": 375,
+        "height": 266
+      },
+      "connectedAlphaPixels": 76861
+    },
+    "nearArm": {
+      "rect": {
+        "x": 986,
+        "y": 129,
+        "width": 193,
+        "height": 252
+      },
+      "solidBounds": {
+        "x": 994,
+        "y": 137,
+        "width": 177,
+        "height": 236
+      },
+      "connectedAlphaPixels": 24579
+    },
+    "farArm": {
+      "rect": {
+        "x": 117,
+        "y": 507,
+        "width": 184,
+        "height": 245
+      },
+      "solidBounds": {
+        "x": 125,
+        "y": 515,
+        "width": 168,
+        "height": 229
+      },
+      "connectedAlphaPixels": 22740
+    },
+    "nearLeg": {
+      "rect": {
+        "x": 571,
+        "y": 496,
+        "width": 181,
+        "height": 267
+      },
+      "solidBounds": {
+        "x": 579,
+        "y": 504,
+        "width": 165,
+        "height": 251
+      },
+      "connectedAlphaPixels": 30831
+    },
+    "farLeg": {
+      "rect": {
+        "x": 972,
+        "y": 503,
+        "width": 172,
+        "height": 246
+      },
+      "solidBounds": {
+        "x": 980,
+        "y": 511,
+        "width": 156,
+        "height": 230
+      },
+      "connectedAlphaPixels": 24785
+    },
+    "blink": {
+      "rect": {
+        "x": 57,
+        "y": 827,
+        "width": 379,
+        "height": 363
+      },
+      "solidBounds": {
+        "x": 65,
+        "y": 835,
+        "width": 363,
+        "height": 347
+      },
+      "connectedAlphaPixels": 75869
+    },
+    "front": {
+      "rect": {
+        "x": 435,
+        "y": 824,
+        "width": 380,
+        "height": 358
+      },
+      "solidBounds": {
+        "x": 443,
+        "y": 832,
+        "width": 364,
+        "height": 342
+      },
+      "connectedAlphaPixels": 81086
+    },
+    "frontBody": {
+      "rect": {
+        "x": 843,
+        "y": 831,
+        "width": 389,
+        "height": 354
+      },
+      "solidBounds": {
+        "x": 851,
+        "y": 839,
+        "width": 373,
+        "height": 338
+      },
+      "connectedAlphaPixels": 87521
+    }
+  },
+  "jointsStatus": "unverified; parent owns rig-profile.json and runtime tuning",
+  "maskStatus": "unverified exact semantic registration",
+  "notes": [
+    "Raw generated PNG bytes and alpha preserved; no pixel editing or crop/repaint applied.",
+    "Actual canvas is 1254x1254 rather than requested preferred 1536x1536.",
+    "Some parts exceed requested 350px extent and/or 80px nominal cell margins; use measured global-component rectangles, not fixed grid cell crops.",
+    "Opaque-interior alpha255 requirement was not achieved; predominant atlas alpha is 253 and mask alpha is 254.",
+    "Garment masks are generated candidates. Canvas equality and silhouette containment metrics do not prove exact semantic fabric boundary registration.",
+    "Pivots, joints, widths, foot contacts, neck joins, turn transitions, garment recoloring, selection bounds and all procedural action playback remain unverified pending parent runtime integration.",
+    "One targeted mask correction generated v2. Bright-white containment improves but opaque black/gray animal pixels remain, so v2 is not usable as a plain alpha-only mask; v1 remains the default candidate. No further correction attempted."
+  ],
+  "alternateMask": {
+    "file": "garment-mask-v2.png",
+    "status": "not plain-alpha usable; bright-white/luminance candidate only; semantic registration unverified"
+  }
+}

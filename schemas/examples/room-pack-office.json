@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "default-office",
+  "name": "Office",
+  "version": "0.1.0",
+  "authors": ["agent-office contributors"],
+  "license": "CC-BY-4.0",
+  "space": "office",
+  "map": "office.tmj",
+  "tilesets": ["tiles/office.png"],
+  "markers": { "desk": 8, "door": 1, "bench": 4, "boss_desk": 1, "coffee": 1, "board": ["whiteboard"] },
+  "animation_overrides": {
+    "working": { "prop": "keyboard" },
+    "waiting_user": { "go_to": "desk", "prop": "hand_sign" }
+  },
+  "props": [ { "id": "keyboard", "image": "props/keyboard.png" }, { "id": "hand_sign", "image": "props/hand_sign.png" } ],
+  "lights": true,
+  "original_work": true
+}

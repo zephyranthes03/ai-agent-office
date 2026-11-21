@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "id": "hermes",
+  "name": "Hermes",
+  "versions_tested": [
+    "0.18.0",
+    "0.23.0"
+  ],
+  "process_names": [],
+  "strategies": [
+    {
+      "kind": "local_db",
+      "provides": [
+        "schedule"
+      ],
+      "reads": [
+        "~/.hermes/cron/jobs.json",
+        "~/.hermes/cron/executions.db",
+        "~/.hermes/cron/admissions/*.json"
+      ],
+      "max_read_bytes": 1048576,
+      "allowlisted_keys": [
+        "jobs.id",
+        "jobs.name",
+        "jobs.enabled",
+        "jobs.state",
+        "jobs.schedule",
+        "jobs.next_run_at",
+        "jobs.last_run_at",
+        "jobs.last_status",
+        "jobs.workdir",
+        "executions.id",
+        "executions.job_id",
+        "executions.status",
+        "executions.claimed_at",
+        "executions.started_at",
+        "executions.finished_at",
+        "admissions.params.job_id",
+        "admissions.params.request_id",
+        "admissions.receipt.session_id"
+      ],
+      "note": "JSON definitions plus latest durable execution metadata and exact optional admission receipt session ids. Legacy completion-only observations cannot rule out a long run. No guessed session names or live AI state."
+    }
+  ],
+  "open": [],
+  "controls": [],
+  "schedule": [
+    "list"
+  ],
+  "service": {
+    "controls": [
+      "start",
+      "stop",
+      "restart"
+    ],
+    "command": "hermes",
+    "process_names": [
+      "python3"
+    ],
+    "identify": {
+      "by": "launchd",
+      "label": "ai.hermes.gateway"
+    },
+    "status": {
+      "args": [
+        "gateway",
+        "list"
+      ],
+      "format": "hermes_list"
+    },
+    "start": {
+      "args": [
+        "gateway",
+        "start"
+      ]
+    },
+    "stop": {
+      "args": [
+        "gateway",
+        "stop"
+      ]
+    },
+    "restart": {
+      "args": [
+        "gateway",
+        "restart"
+      ]
+    },
+    "timeout_s": 1920,
+    "settle_s": 30,
+    "verified": true
+  },
+  "permissions": {
+    "read_paths": [
+      "~/.hermes/cron/jobs.json",
+      "~/.hermes/cron/executions.db",
+      "~/.hermes/cron/admissions/*.json"
+    ],
+    "write_paths": [],
+    "network": [],
+    "spawn": ["hermes"]
+  }
+}

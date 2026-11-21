@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "claude-code",
+  "name": "Claude Code",
+  "homepage": "https://code.claude.com/docs/en/hooks",
+  "versions_tested": ["2.1.287", "2.1.304"],
+  "process_names": ["claude", "node"],
+  "strategies": [
+    { "kind": "hook", "provides": ["state", "identity"], "note": "Primary. Installed via ~/.claude/settings.json (additive). For the delegation tool (the Claude app's mcp__ccd_session__start_session, a cloud session) the envelope also carries tool_input.target and tool_input.initiation, two enums; never the prompt." },
+    { "kind": "transcript_metadata", "provides": ["origin"], "reads": ["~/.claude/projects/*/*.jsonl"], "max_read_bytes": 65536,
+      "allowlisted_keys": ["turnOrigin", "entrypoint", "promptSource", "permissionMode", "version", "gitBranch", "isSidechain", "origin.kind", "origin.producer", "origin.runId"],
+      "note": "Reads only the tail of the transcript named by the hook; never message bodies. origin.* of a task-notification prompt says another task's result came back (a delegation closes)." },
+    { "kind": "transcript_metadata", "provides": ["state"], "reads": ["~/.claude/projects/*/*.jsonl"], "max_read_bytes": 65536,
+      "allowlisted_keys": ["type", "timestamp", "message.content", "customTitle", "aiTitle"],
+      "note": "Every 30 s, active hook-reported transcripts that changed: the title (customTitle, else aiTitle; memory only) and Esc in a turn quiet for 10 s; message.content is only compared with the two interrupt markers." },
+    { "kind": "local_db", "provides": ["identity"], "reads": ["~/Library/Application Support/Claude/claude-code-sessions/*/*/local_*.json"], "max_read_bytes": 262144,
+      "allowlisted_keys": ["sessionId", "cliSessionId"],
+      "note": "Only when the owner opens a session that runs in the Claude desktop app: its own session id, for the link claude://code/continue?session=local_…. Nothing is kept." },
+    { "kind": "session_log", "provides": ["tokens"], "reads": ["~/.claude/projects/*/*.jsonl"], "max_read_bytes": 1048576,
+      "allowlisted_keys": ["usage", "model", "timestamp", "requestId"], "note": "Per-message usage objects; dedupe rules in docs/usage-and-cost.md." },
+    { "kind": "process_scan", "provides": ["liveness"], "note": "Verifies hook ppid and detects dead sessions via the platform layer." },
+    { "kind": "api", "provides": ["identity"], "allowlisted_keys": ["pid", "sessionId", "kind", "status", "startedAt"], "note": "Only right before a lifecycle control: `agents --json` run with the session's own executable lists the running sessions; the session id must be at the same pid as an interactive session. Nothing is kept." },
+    {"kind": "local_db", "provides": ["schedule"], "reads": ["~/Library/Application Support/Claude/claude-code-sessions/*/*/scheduled-tasks.json", "~/Library/Application Support/Claude/local-agent-mode-sessions/*/*/scheduled-tasks.json", "~/Library/Application Support/Claude/claude-code-sessions/*/*/local_*.json"], "max_read_bytes": 1048576, "allowlisted_keys": ["scheduledTasks.id", "scheduledTasks.displayName", "scheduledTasks.enabled", "scheduledTasks.cronExpression", "scheduledTasks.fireAt", "scheduledTasks.lastRunAt", "scheduledTasks.lastScheduledFor", "scheduledTasks.createdAt", "scheduledTasks.filePath", "scheduledTasks.cwd", "sessionId", "cliSessionId", "scheduledTaskId", "createdAt"], "note": "Claude desktop 4.23118.0 Code and Cowork definitions. Cron next time unknown; lastRunAt is processing, not execution. Exact Code session ids only; no Cowork CLI mapping. Explicit app directory override supported."}
+  ],
+  "hook_events": ["SessionStart", "SessionEnd", "UserPromptSubmit", "PreToolUse", "PostToolUse", "PostToolUseFailure", "PermissionRequest", "PermissionDenied", "Notification", "Stop", "StopFailure", "SubagentStart", "SubagentStop"],
+  "tool_classes": { "Agent": "dependency", "Task": "dependency", "AskUserQuestion": "input", "ExitPlanMode": "approval", "EnterPlanMode": "approval", "mcp__ccd_session__start_session": "delegation" },
+  "open": ["focus_window", "cli"],
+  "open_cli": { "command": "claude", "args": ["--resume", "{session}"], "verified": true },
+  "controls": ["start"],
+  "lifecycle": {
+    "hosts": ["terminal"],
+    "process_names": ["claude"],
+    "start": { "command": "claude", "args": ["--session-id", "{session}"], "verified": true },
+    "inventory": { "args": ["agents", "--json"], "verified": true },
+    "unset_env": ["CLAUDECODE", "CLAUDE_CODE_CHILD_SESSION", "CLAUDE_CODE_SESSION_ID", "CLAUDE_CODE_ENTRYPOINT", "CLAUDE_CODE_EXECPATH", "CLAUDE_CODE_MESSAGING_SOCKET", "CLAUDE_CODE_MESSAGING_TOKEN", "CLAUDE_CODE_SESSION_ATTENDED", "CLAUDE_PID"]
+  },
+  "schedule": ["list"],
+  "usage": { "tokens": true, "limits": false, "limits_source": null },
+  "permissions": {
+    "read_paths": ["~/.claude/projects/**/*.jsonl", "~/Library/Application Support/Claude/claude-code-sessions/*/*/local_*.json", "~/.claude/settings.json", "~/.claude/scheduled-tasks/*/SKILL.md", "~/Library/Application Support/Claude/claude-code-sessions/*/*/scheduled-tasks.json", "~/Library/Application Support/Claude/local-agent-mode-sessions/*/*/scheduled-tasks.json"],
+    "write_paths": ["~/.claude/settings.json"],
+    "network": [],
+    "spawn": ["claude"]
+  }
+}

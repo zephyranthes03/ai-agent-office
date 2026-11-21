@@ -1,0 +1,196 @@
+{
+  "version": 1,
+  "species": "dog",
+  "image": "atlas-v2.png",
+  "mask": "garment-mask-v1.png",
+  "width": 1254,
+  "height": 1254,
+  "coordinateSystem": "source pixels",
+  "frames": {
+    "head": {
+      "rect": {
+        "x": 55,
+        "y": 122,
+        "width": 362,
+        "height": 268
+      },
+      "solidBounds": {
+        "x": 63,
+        "y": 130,
+        "width": 346,
+        "height": 252
+      },
+      "alphaThreshold": 16,
+      "connectedPixelCount": 60806
+    },
+    "torso": {
+      "rect": {
+        "x": 483,
+        "y": 122,
+        "width": 353,
+        "height": 280
+      },
+      "solidBounds": {
+        "x": 491,
+        "y": 130,
+        "width": 337,
+        "height": 264
+      },
+      "alphaThreshold": 16,
+      "connectedPixelCount": 62951
+    },
+    "nearArm": {
+      "rect": {
+        "x": 972,
+        "y": 132,
+        "width": 203,
+        "height": 262
+      },
+      "solidBounds": {
+        "x": 980,
+        "y": 140,
+        "width": 187,
+        "height": 246
+      },
+      "alphaThreshold": 16,
+      "connectedPixelCount": 28341
+    },
+    "farArm": {
+      "rect": {
+        "x": 146,
+        "y": 507,
+        "width": 177,
+        "height": 264
+      },
+      "solidBounds": {
+        "x": 154,
+        "y": 515,
+        "width": 161,
+        "height": 248
+      },
+      "alphaThreshold": 16,
+      "connectedPixelCount": 27662
+    },
+    "nearLeg": {
+      "rect": {
+        "x": 556,
+        "y": 511,
+        "width": 210,
+        "height": 251
+      },
+      "solidBounds": {
+        "x": 564,
+        "y": 519,
+        "width": 194,
+        "height": 235
+      },
+      "alphaThreshold": 16,
+      "connectedPixelCount": 33381
+    },
+    "farLeg": {
+      "rect": {
+        "x": 991,
+        "y": 565,
+        "width": 163,
+        "height": 192
+      },
+      "solidBounds": {
+        "x": 999,
+        "y": 573,
+        "width": 147,
+        "height": 176
+      },
+      "alphaThreshold": 16,
+      "connectedPixelCount": 19663
+    },
+    "blink": {
+      "rect": {
+        "x": 41,
+        "y": 883,
+        "width": 376,
+        "height": 270
+      },
+      "solidBounds": {
+        "x": 49,
+        "y": 891,
+        "width": 360,
+        "height": 254
+      },
+      "alphaThreshold": 16,
+      "connectedPixelCount": 63685
+    },
+    "front": {
+      "rect": {
+        "x": 448,
+        "y": 884,
+        "width": 394,
+        "height": 269
+      },
+      "solidBounds": {
+        "x": 456,
+        "y": 892,
+        "width": 378,
+        "height": 253
+      },
+      "alphaThreshold": 16,
+      "connectedPixelCount": 66322
+    },
+    "frontBody": {
+      "rect": {
+        "x": 878,
+        "y": 866,
+        "width": 345,
+        "height": 309
+      },
+      "solidBounds": {
+        "x": 886,
+        "y": 874,
+        "width": 329,
+        "height": 293
+      },
+      "alphaThreshold": 16,
+      "connectedPixelCount": 65870
+    }
+  },
+  "maskAccepted": false,
+  "rigAssemblyVerified": false,
+  "cropPolicy": "Nine principal connected alpha>=16 components measured globally, assigned to the visible three rows and columns, then padded by8 source pixels. Original PNG untouched.",
+  "maskValidation": [
+    {
+      "file": "garment-mask-v1.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "foregroundPixelsAlphaAtLeast16": 118633,
+      "pixelsOutsideSourceSilhouette": 149,
+      "outsideSourceSilhouetteFraction": 0.0012559743073175256,
+      "pixelsMoreThan3pxOutsideSourceSilhouette": 0,
+      "pureWhiteForegroundPixels": 9872,
+      "accepted": false
+    },
+    {
+      "file": "garment-mask-v2.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "foregroundPixelsAlphaAtLeast16": 138392,
+      "pixelsOutsideSourceSilhouette": 3556,
+      "outsideSourceSilhouetteFraction": 0.025695126885947165,
+      "pixelsMoreThan3pxOutsideSourceSilhouette": 324,
+      "pureWhiteForegroundPixels": 5773,
+      "accepted": false
+    }
+  ],
+  "issues": [
+    "The built-in generator returned 1254 x 1254 instead of the preferred 1536 x 1536.",
+    "Opaque source interiors are predominantly alpha253, not requested alpha255; original PNG bytes were preserved.",
+    "Generated image contains low-alpha background residue; pixels were not rewritten.",
+    "Exact fixed-thirds cell layout was not obtained. Use measured component rectangles, not equal-cell source crops.",
+    "Garment mask is a candidate only: exact source garment boundaries and alpha255 white interiors did not pass generation. Do not treat this as a verified production recoloring mask.",
+    "Pivots, joints, suggested widths, movement, foot contact, turn silhouette and runtime clipping remain unverified for parent integration.",
+    "Blink head width360 and front head width378 exceed requested350 maximum. One targeted atlas correction was used.",
+    "Garment-mask-v2 adds fur/belly remnants and is worse than v1. Keep v1 as the best unaccepted candidate."
+  ]
+}

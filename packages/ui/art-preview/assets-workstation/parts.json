@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "purpose": "Private v5 modular workstation art; not a production room-pack manifest.",
+  "image": "workstation-v2.png",
+  "width": 1254,
+  "height": 1254,
+  "coordinateSystem": "Source image pixels; normalizedAnchors are relative to rect.",
+  "cropPolicy": "Actual alpha>=16 principal connected component plus 8 pixels of padding, clamped to source. Never assume fixed grid cells. PNG bytes and alpha remain unmodified.",
+  "anchorStatus": "Visually measured starting points, unverified for hand contact until integrated in the actual renderer.",
+  "orientation": {
+    "laptopUserSide": "left",
+    "laptopViewingDirection": "right",
+    "keyboardIsLeftOfScreen": true,
+    "screenFrontVisible": true,
+    "runtimeMirroring": "Mirror both pixels and every anchor for an opposite-facing user."
+  },
+  "frames": {
+    "desk": {
+      "rect": {
+        "x": 60,
+        "y": 256,
+        "width": 647,
+        "height": 283
+      },
+      "solidBounds": {
+        "x": 68,
+        "y": 264,
+        "width": 631,
+        "height": 267
+      },
+      "connectedAlphaPixels": 142287,
+      "anchors": {
+        "groundBottom": {
+          "x": 384,
+          "y": 531
+        },
+        "topSurfaceCenter": {
+          "x": 384,
+          "y": 332
+        },
+        "topSurfaceLeft": {
+          "x": 145,
+          "y": 333
+        },
+        "topSurfaceRight": {
+          "x": 623,
+          "y": 333
+        }
+      },
+      "normalizedAnchors": {
+        "groundBottom": {
+          "x": 0.500772797527048,
+          "y": 0.9717314487632509
+        },
+        "topSurfaceCenter": {
+          "x": 0.500772797527048,
+          "y": 0.26855123674911663
+        },
+        "topSurfaceLeft": {
+          "x": 0.13137557959814528,
+          "y": 0.27208480565371024
+        },
+        "topSurfaceRight": {
+          "x": 0.8701700154559505,
+          "y": 0.27208480565371024
+        }
+      },
+      "suggestedWidth": 410,
+      "notes": "Empty tabletop, no baked computer or lamp. groundBottom is the exclusive bottom boundary. Surface anchors are visual measurements, not collision ground."
+    },
+    "laptop": {
+      "rect": {
+        "x": 813,
+        "y": 253,
+        "width": 400,
+        "height": 294
+      },
+      "solidBounds": {
+        "x": 821,
+        "y": 261,
+        "width": 384,
+        "height": 278
+      },
+      "connectedAlphaPixels": 56331,
+      "anchors": {
+        "keyboardCenter": {
+          "x": 945,
+          "y": 480
+        },
+        "keyboardNearHand": {
+          "x": 934,
+          "y": 493
+        },
+        "keyboardFarHand": {
+          "x": 965,
+          "y": 476
+        },
+        "screenCenter": {
+          "x": 1090,
+          "y": 390
+        },
+        "groundBottom": {
+          "x": 988,
+          "y": 539
+        }
+      },
+      "normalizedAnchors": {
+        "keyboardCenter": {
+          "x": 0.33,
+          "y": 0.7721088435374149
+        },
+        "keyboardNearHand": {
+          "x": 0.3025,
+          "y": 0.8163265306122449
+        },
+        "keyboardFarHand": {
+          "x": 0.38,
+          "y": 0.7585034013605442
+        },
+        "screenCenter": {
+          "x": 0.6925,
+          "y": 0.46598639455782315
+        },
+        "groundBottom": {
+          "x": 0.4375,
+          "y": 0.9727891156462585
+        }
+      },
+      "suggestedWidth": 96,
+      "notes": "Keyboard extends left, upright screen/front display is right. Intended user side is left looking right. Mirror source and anchors together for the opposite station. Hand points are provisional; near/far follow source image depth, not anatomical arm names.",
+      "sourceScreenPolygon": [
+        {
+          "x": 1016,
+          "y": 310
+        },
+        {
+          "x": 1197,
+          "y": 267
+        },
+        {
+          "x": 1168,
+          "y": 484
+        },
+        {
+          "x": 984,
+          "y": 531
+        }
+      ],
+      "polygonStatus": "Visual occlusion proposal; verify against renderer before use. Not a semantic mask."
+    },
+    "lamp": {
+      "rect": {
+        "x": 255,
+        "y": 862,
+        "width": 220,
+        "height": 292
+      },
+      "solidBounds": {
+        "x": 263,
+        "y": 870,
+        "width": 204,
+        "height": 276
+      },
+      "connectedAlphaPixels": 28627,
+      "anchors": {
+        "groundBottom": {
+          "x": 365,
+          "y": 1146
+        },
+        "shadeCenter": {
+          "x": 365,
+          "y": 954
+        },
+        "lightCenter": {
+          "x": 365,
+          "y": 1001
+        }
+      },
+      "normalizedAnchors": {
+        "groundBottom": {
+          "x": 0.5,
+          "y": 0.9726027397260274
+        },
+        "shadeCenter": {
+          "x": 0.5,
+          "y": 0.3150684931506849
+        },
+        "lightCenter": {
+          "x": 0.5,
+          "y": 0.476027397260274
+        }
+      },
+      "suggestedWidth": 47,
+      "notes": "Standalone brass lamp; no glow outside silhouette. groundBottom is the exclusive bottom boundary."
+    }
+  },
+  "limitations": [
+    "Actual canvas1254 square rather than requested1536.",
+    "Interior alpha is predominantly253/254, not uniformly255.",
+    "Desk631x267, laptop384x278, lamp204x276 exceed some requested sizing targets.",
+    "Minimum component bounding-box gutter122px; rightmost canvas margin49px is below requested60px.",
+    "No actual runtime hand, screen gaze, surface height, collision or depth-order validation performed in this art task."
+  ]
+}

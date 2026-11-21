@@ -1,0 +1,278 @@
+{
+  "version": 1,
+  "purpose": "Private flow-design runtime clothing material masks; not a public character-pack manifest.",
+  "generator": "built-in image_gen.imagegen EDIT",
+  "coordinateSystem": "All masks preserve the original 1536x1024 source canvas; runtime crops use the corresponding source atlas rect.",
+  "generationCalls": {
+    "initial": 4,
+    "targetedFrontCorrection": 1,
+    "total": 5
+  },
+  "pixelPolicy": "Generated PNG bytes copied unchanged. Python used only for read-only pixel analysis and metadata; no bitmap thresholding, resampling, recoloring or compositing.",
+  "side": {
+    "otter": {
+      "image": "./assets-identity/otter-clothing-mask-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "source": "./assets-rig/otter-rig-v2.png",
+      "sourceSha": "a19e303dcd09d7b8946e8f6f2469e26e870162c63a04f5809dcbafe0e4b494f4",
+      "maskSha": "a3fceecbd73af7fb4c454a9049757ef58bd9cdc4b6cc4acd6c569860a2083c85",
+      "prompt": "otter-clothing-mask-v1.prompt.txt",
+      "tintParts": [
+        "torso"
+      ],
+      "alphaBounds128": [
+        655,
+        143,
+        1053,
+        434
+      ],
+      "validation": {
+        "status": "approximate-needs-runtime-material-check",
+        "pixelExact": false,
+        "selectedPixels128": 58245,
+        "selectedOverTransparentSource128": 8,
+        "looseSourceColorMismatchPercent": 2.903,
+        "colorMetricCaveat": "Heuristic RGB comparison, not a labeled ground-truth segmentation score. Edge antialiasing and fabric shading can affect this count.",
+        "alphaMinMax": [
+          0,
+          254
+        ]
+      },
+      "material": "sage-green apron, straps and back bow",
+      "sourceFrame": {
+        "x": 540,
+        "y": 128,
+        "width": 531,
+        "height": 361
+      },
+      "excludedParts": [
+        "head",
+        "nearArm",
+        "farArm",
+        "nearLeg",
+        "farLeg"
+      ]
+    },
+    "cat": {
+      "image": "./assets-identity/cat-clothing-mask-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "source": "./assets-rig/cat-rig-v1.png",
+      "sourceSha": "9c1f328e6a9984586bf52c97d9f083572660c08338fc4676c8e577cd5fa10302",
+      "maskSha": "67791e2faa1c3d8e5e05e6c466818cde892eec5472e9c956823236da5d3fe55a",
+      "prompt": "cat-clothing-mask-v1.prompt.txt",
+      "tintParts": [
+        "torso"
+      ],
+      "alphaBounds128": [
+        672,
+        168,
+        1109,
+        464
+      ],
+      "validation": {
+        "status": "approximate-needs-runtime-material-check",
+        "pixelExact": false,
+        "selectedPixels128": 71905,
+        "selectedOverTransparentSource128": 2,
+        "looseSourceColorMismatchPercent": 0.17,
+        "colorMetricCaveat": "Heuristic RGB comparison, not a labeled ground-truth segmentation score. Edge antialiasing and fabric shading can affect this count.",
+        "alphaMinMax": [
+          0,
+          254
+        ]
+      },
+      "material": "ochre/mustard vest only",
+      "sourceFrame": {
+        "x": 565,
+        "y": 153,
+        "width": 554,
+        "height": 395
+      },
+      "excludedParts": [
+        "head",
+        "nearArm",
+        "farArm",
+        "nearLeg",
+        "farLeg"
+      ]
+    },
+    "bird": {
+      "image": "./assets-identity/bird-clothing-mask-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "source": "./assets-rig/bird-rig-v1.png",
+      "sourceSha": "44835c810b19c5079b9c6628d01ab1310773b7b32c42f4e03bde400ef6022126",
+      "maskSha": "8ab5b85412fa7a8fdc5157dee1a2e4e2fe56d430eef22da24bc2fabfe699115a",
+      "prompt": "bird-clothing-mask-v1.prompt.txt",
+      "tintParts": [
+        "torso"
+      ],
+      "alphaBounds128": [
+        592,
+        179,
+        1040,
+        335
+      ],
+      "validation": {
+        "status": "approximate-needs-runtime-material-check",
+        "pixelExact": false,
+        "selectedPixels128": 30518,
+        "selectedOverTransparentSource128": 12,
+        "looseSourceColorMismatchPercent": 1.337,
+        "colorMetricCaveat": "Heuristic RGB comparison, not a labeled ground-truth segmentation score. Edge antialiasing and fabric shading can affect this count.",
+        "alphaMinMax": [
+          0,
+          254
+        ]
+      },
+      "material": "terracotta/orange scarf and fabric ends",
+      "sourceFrame": {
+        "x": 518,
+        "y": 170,
+        "width": 566,
+        "height": 347
+      },
+      "excludedParts": [
+        "head",
+        "nearArm",
+        "farArm",
+        "nearLeg",
+        "farLeg"
+      ]
+    }
+  },
+  "front": {
+    "image": "./assets-identity/front-clothing-mask-v2.png",
+    "width": 1536,
+    "height": 1024,
+    "source": "./assets-rig/front-turn-body-v1.png",
+    "sourceSha": "7925f6927f16cc9791b6070474d56e46d4ab22f464583373c867637abd2bd5e3",
+    "maskSha": "f6cc520310c8a37f12f5869c5705e87fd93ce11a079179943393970f07c37131",
+    "prompt": "front-clothing-mask-v2.prompt.txt",
+    "tintParts": [
+      "frontBody"
+    ],
+    "alphaBounds128": [
+      109,
+      288,
+      1418,
+      641
+    ],
+    "validation": {
+      "status": "approximate-needs-runtime-material-check",
+      "pixelExact": false,
+      "selectedPixels128": 149460,
+      "selectedOverTransparentSource128": 1263,
+      "looseSourceColorMismatchPercent": 3.597,
+      "colorMetricCaveat": "Heuristic RGB comparison, not a labeled ground-truth segmentation score. Edge antialiasing and fabric shading can affect this count.",
+      "alphaMinMax": [
+        0,
+        254
+      ]
+    },
+    "regions": {
+      "otter": {
+        "material": "sage-green apron, straps and back bow",
+        "sourceFrame": {
+          "x": 28,
+          "y": 274,
+          "width": 487,
+          "height": 520
+        }
+      },
+      "cat": {
+        "material": "ochre/mustard vest only",
+        "sourceFrame": {
+          "x": 525,
+          "y": 276,
+          "width": 490,
+          "height": 518
+        }
+      },
+      "bird": {
+        "material": "terracotta/orange scarf and fabric ends",
+        "sourceFrame": {
+          "x": 1028,
+          "y": 297,
+          "width": 492,
+          "height": 497
+        }
+      }
+    },
+    "correctionEffect": {
+      "looseSourceColorMismatchPercent": {
+        "before": 11.595,
+        "after": 3.597
+      },
+      "selectedOverTransparentSource128": {
+        "before": 3315,
+        "after": 1263
+      }
+    }
+  },
+  "poseCoverage": {
+    "sideRigTintParts": [
+      "torso"
+    ],
+    "untintedRigParts": [
+      "head",
+      "nearArm",
+      "farArm",
+      "nearLeg",
+      "farLeg"
+    ],
+    "expressionAtlasNeedsMask": false,
+    "expressionAtlasReason": "Both blink and front head sprites contain plain fur/feathers/neck only; bird scarf belongs entirely to torso.",
+    "frontTurnAssemblyCovered": true,
+    "catCreamSleevesRemainOriginal": true
+  },
+  "validationBoundary": "Visual inspection and read-only source-pixel analysis completed. Masks are approximate generated selections, not pixel-exact labels. Runtime composite tests and a source-material guard are still required to prevent fringe/occlusion spill onto fur or cream sleeves. Source-alpha clipping alone does not prevent those errors.",
+  "knownFailures": [
+    {
+      "image": "front-clothing-mask-v2.png",
+      "point": [
+        140,
+        550
+      ],
+      "sourceRGBA": [
+        136,
+        93,
+        67,
+        253
+      ],
+      "maskAlpha": 252,
+      "issue": "Brown otter paw pixel is incorrectly selected."
+    },
+    {
+      "image": "front-clothing-mask-v2.png",
+      "point": [
+        902,
+        450
+      ],
+      "sourceRGBA": [
+        229,
+        200,
+        166,
+        253
+      ],
+      "maskAlpha": 252,
+      "issue": "Cream cat sleeve/vest-boundary pixel is incorrectly selected."
+    }
+  ],
+  "analysisFiles": [
+    "alignment-analysis-v1.json",
+    "alignment-analysis-front-v2.json"
+  ],
+  "retainedAlternatives": [
+    {
+      "image": "front-clothing-mask-v1.png",
+      "prompt": "front-clothing-mask-v1.prompt.txt",
+      "status": "rejected-for-occlusion-and-registration-errors",
+      "looseSourceColorMismatchPercent": 11.595
+    }
+  ],
+  "sourceMaterialSamples": "material-source-samples.json",
+  "additionalGenerationStopped": true
+}

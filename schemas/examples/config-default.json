@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "daemon": {
+    "port": 47631,
+    "log_level": "info",
+    "stay_awake": false
+  },
+  "privacy": {
+    "detail_level": "target",
+    "screen_share_mode": false
+  },
+  "states": {
+    "done_hold_s": 3,
+    "cancelled_hold_s": 3,
+    "working_stale_s": 900,
+    "idle_stale_s": 21600,
+    "unknown_gone_s": 86400,
+    "liveness_fresh_s": 90,
+    "approval_wait_timeout_s": null,
+    "long_turn_min": 20
+  },
+  "species": {
+    "claude-code": "cat",
+    "codex": "otter"
+  },
+  "spaces": {
+    "default": "lounge",
+    "rules": {
+      "office": {
+        "cwd": [
+          "~/dev/**"
+        ]
+      },
+      "tax": {
+        "keywords": [
+          "tax",
+          "invoice",
+          "1099"
+        ]
+      },
+      "school": {
+        "task_name": [
+          "*school*",
+          "*class*"
+        ]
+      }
+    },
+    "classify_with_local_llm": false
+  },
+  "labels": {
+    "show": "needs-you",
+    "level": "default",
+    "max_chars": 24,
+    "by_space": {
+      "lounge": {
+        "level": "minimal"
+      }
+    }
+  },
+  "notifications": {
+    "waiting_user": true,
+    "error": true,
+    "silent": true,
+    "lost": true,
+    "ready": false,
+    "ready_min_turn_min": 10,
+    "usage_warn_percent": 80,
+    "channels": {
+      "desktop": {
+        "enabled": true,
+        "click_opens": "session"
+      },
+      "ntfy": {
+        "enabled": false
+      }
+    },
+    "min_wait_s": 3,
+    "min_wait_s_sdk": 15,
+    "sound": "chime"
+  },
+  "remote_view": {
+    "detail": "status"
+  },
+  "usage": {
+    "timezone": "local",
+    "day_starts_at": "00:00",
+    "pricing": {
+      "source": "bundled"
+    }
+  },
+  "servers": [
+    {
+      "name": "LM Studio",
+      "url": "http://127.0.0.1:1234/v1",
+      "poll_s": 30
+    }
+  ],
+  "adapters": {
+    "claude-code": {
+      "enabled": true
+    },
+    "codex": {
+      "enabled": true
+    }
+  },
+  "external_sources": {
+    "codexbar": {
+      "enabled": false
+    }
+  },
+  "storage": {
+    "retention_days": {
+      "events": 30,
+      "history": 90,
+      "usage_daily": 400
+    }
+  },
+  "packs": {
+    "characters": [],
+    "rooms": []
+  },
+  "external_hooks": {
+    "enabled": false,
+    "rules": []
+  },
+  "app": {
+    "launch_at_login": false,
+    "close_to_tray": true,
+    "terminal": null
+  },
+  "ui": {
+    "language": "auto"
+  }
+}

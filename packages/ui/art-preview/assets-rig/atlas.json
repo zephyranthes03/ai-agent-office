@@ -1,0 +1,486 @@
+{
+  "version": 1,
+  "coordinateSystem": "source pixels",
+  "purpose": "Private flow-design prototype cutout rigs; not a character-pack schema manifest.",
+  "cropPolicy": "Rects contain the connected alpha>=16 component plus 8 source pixels of padding. Original PNG bytes are preserved. Runtime drawImage source cropping is intended.",
+  "pivotPolicy": "Frame pivots are normalized crop coordinates. Torso joints are normalized torso crop coordinates. Suggested widths and joints are unverified assembly starting points; scene rendering owns tuning.",
+  "drawOrder": [
+    "farLeg",
+    "farArm",
+    "torso",
+    "nearLeg",
+    "head",
+    "nearArm"
+  ],
+  "species": {
+    "otter": {
+      "image": "./assets-rig/otter-rig-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a19e303dcd09d7b8946e8f6f2469e26e870162c63a04f5809dcbafe0e4b494f4",
+      "facing": "right",
+      "frames": {
+        "head": {
+          "rect": {
+            "x": 66,
+            "y": 133,
+            "width": 451,
+            "height": 329
+          },
+          "pivot": {
+            "x": 0.4604,
+            "y": 0.9
+          },
+          "suggestedWidth": 68,
+          "solidBounds": {
+            "x": 74,
+            "y": 141,
+            "width": 435,
+            "height": 313
+          }
+        },
+        "torso": {
+          "rect": {
+            "x": 540,
+            "y": 128,
+            "width": 531,
+            "height": 361
+          },
+          "pivot": {
+            "x": 0.62,
+            "y": 0.87
+          },
+          "suggestedWidth": 80,
+          "solidBounds": {
+            "x": 548,
+            "y": 136,
+            "width": 515,
+            "height": 345
+          },
+          "seatSupport": {
+            "x": 0.57617616,
+            "y": 0.97783934
+          }
+        },
+        "nearArm": {
+          "rect": {
+            "x": 1204,
+            "y": 126,
+            "width": 297,
+            "height": 341
+          },
+          "pivot": {
+            "x": 0.4,
+            "y": 0.174
+          },
+          "suggestedWidth": 24,
+          "solidBounds": {
+            "x": 1212,
+            "y": 134,
+            "width": 281,
+            "height": 325
+          },
+          "mirrorX": false
+        },
+        "farArm": {
+          "rect": {
+            "x": 128,
+            "y": 562,
+            "width": 314,
+            "height": 347
+          },
+          "pivot": {
+            "x": 0.366,
+            "y": 0.174
+          },
+          "suggestedWidth": 23.52,
+          "solidBounds": {
+            "x": 136,
+            "y": 570,
+            "width": 298,
+            "height": 331
+          },
+          "mirrorX": true,
+          "perspectiveScale": 1
+        },
+        "nearLeg": {
+          "rect": {
+            "x": 660,
+            "y": 610,
+            "width": 279,
+            "height": 281
+          },
+          "pivot": {
+            "x": 0.48,
+            "y": 0.16
+          },
+          "suggestedWidth": 22,
+          "solidBounds": {
+            "x": 668,
+            "y": 618,
+            "width": 263,
+            "height": 265
+          }
+        },
+        "farLeg": {
+          "rect": {
+            "x": 1176,
+            "y": 634,
+            "width": 259,
+            "height": 257
+          },
+          "pivot": {
+            "x": 0.47,
+            "y": 0.16
+          },
+          "suggestedWidth": 20,
+          "solidBounds": {
+            "x": 1184,
+            "y": 642,
+            "width": 243,
+            "height": 241
+          }
+        }
+      },
+      "joints": {
+        "head": {
+          "x": 0.63,
+          "y": 0.12
+        },
+        "nearArm": {
+          "x": 0.43,
+          "y": 0.295
+        },
+        "farArm": {
+          "x": 0.83,
+          "y": 0.255
+        },
+        "nearLeg": {
+          "x": 0.5,
+          "y": 0.86
+        },
+        "farLeg": {
+          "x": 0.8,
+          "y": 0.86
+        }
+      },
+      "notes": [
+        "Generated interiors reach alpha254, not requested alpha255; no postprocessing applied.",
+        "No blink or eyelid variant included."
+      ]
+    },
+    "cat": {
+      "image": "./assets-rig/cat-rig-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "9c1f328e6a9984586bf52c97d9f083572660c08338fc4676c8e577cd5fa10302",
+      "facing": "right",
+      "frames": {
+        "head": {
+          "rect": {
+            "x": 64,
+            "y": 84,
+            "width": 494,
+            "height": 410
+          },
+          "pivot": {
+            "x": 0.5067,
+            "y": 0.9
+          },
+          "suggestedWidth": 70,
+          "solidBounds": {
+            "x": 72,
+            "y": 92,
+            "width": 478,
+            "height": 394
+          }
+        },
+        "torso": {
+          "rect": {
+            "x": 565,
+            "y": 153,
+            "width": 554,
+            "height": 395
+          },
+          "pivot": {
+            "x": 0.62,
+            "y": 0.87
+          },
+          "suggestedWidth": 82,
+          "solidBounds": {
+            "x": 573,
+            "y": 161,
+            "width": 538,
+            "height": 379
+          },
+          "seatSupport": {
+            "x": 0.62602935,
+            "y": 0.97974684
+          }
+        },
+        "nearArm": {
+          "rect": {
+            "x": 1206,
+            "y": 187,
+            "width": 284,
+            "height": 315
+          },
+          "pivot": {
+            "x": 0.316,
+            "y": 0.175
+          },
+          "suggestedWidth": 23,
+          "solidBounds": {
+            "x": 1214,
+            "y": 195,
+            "width": 268,
+            "height": 299
+          },
+          "mirrorX": false
+        },
+        "farArm": {
+          "rect": {
+            "x": 186,
+            "y": 626,
+            "width": 274,
+            "height": 284
+          },
+          "pivot": {
+            "x": 0.307,
+            "y": 0.176
+          },
+          "suggestedWidth": 22.54,
+          "solidBounds": {
+            "x": 194,
+            "y": 634,
+            "width": 258,
+            "height": 268
+          },
+          "mirrorX": true,
+          "perspectiveScale": 1
+        },
+        "nearLeg": {
+          "rect": {
+            "x": 692,
+            "y": 653,
+            "width": 265,
+            "height": 268
+          },
+          "pivot": {
+            "x": 0.49,
+            "y": 0.14
+          },
+          "suggestedWidth": 21,
+          "solidBounds": {
+            "x": 700,
+            "y": 661,
+            "width": 249,
+            "height": 252
+          }
+        },
+        "farLeg": {
+          "rect": {
+            "x": 1199,
+            "y": 682,
+            "width": 245,
+            "height": 238
+          },
+          "pivot": {
+            "x": 0.49,
+            "y": 0.14
+          },
+          "suggestedWidth": 19,
+          "solidBounds": {
+            "x": 1207,
+            "y": 690,
+            "width": 229,
+            "height": 222
+          }
+        }
+      },
+      "joints": {
+        "head": {
+          "x": 0.5886463414634147,
+          "y": 0.11
+        },
+        "nearArm": {
+          "x": 0.405,
+          "y": 0.3
+        },
+        "farArm": {
+          "x": 0.8,
+          "y": 0.265
+        },
+        "nearLeg": {
+          "x": 0.5,
+          "y": 0.87
+        },
+        "farLeg": {
+          "x": 0.79,
+          "y": 0.87
+        }
+      },
+      "notes": [
+        "Generated interiors reach alpha254, not requested alpha255; no postprocessing applied.",
+        "No blink or eyelid variant included."
+      ]
+    },
+    "bird": {
+      "image": "./assets-rig/bird-rig-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "44835c810b19c5079b9c6628d01ab1310773b7b32c42f4e03bde400ef6022126",
+      "facing": "right",
+      "frames": {
+        "head": {
+          "rect": {
+            "x": 49,
+            "y": 93,
+            "width": 439,
+            "height": 400
+          },
+          "pivot": {
+            "x": 0.5658,
+            "y": 0.91
+          },
+          "suggestedWidth": 64,
+          "solidBounds": {
+            "x": 57,
+            "y": 101,
+            "width": 423,
+            "height": 384
+          }
+        },
+        "torso": {
+          "rect": {
+            "x": 518,
+            "y": 170,
+            "width": 566,
+            "height": 347
+          },
+          "pivot": {
+            "x": 0.62,
+            "y": 0.87
+          },
+          "suggestedWidth": 78,
+          "solidBounds": {
+            "x": 526,
+            "y": 178,
+            "width": 550,
+            "height": 331
+          },
+          "seatSupport": {
+            "x": 0.59722035,
+            "y": 0.97694524
+          }
+        },
+        "nearArm": {
+          "rect": {
+            "x": 1171,
+            "y": 188,
+            "width": 335,
+            "height": 302
+          },
+          "pivot": {
+            "x": 0.334,
+            "y": 0.181
+          },
+          "suggestedWidth": 27,
+          "solidBounds": {
+            "x": 1179,
+            "y": 196,
+            "width": 319,
+            "height": 286
+          },
+          "mirrorX": false
+        },
+        "farArm": {
+          "rect": {
+            "x": 155,
+            "y": 628,
+            "width": 277,
+            "height": 283
+          },
+          "pivot": {
+            "x": 0.379,
+            "y": 0.18
+          },
+          "suggestedWidth": 30.38,
+          "solidBounds": {
+            "x": 163,
+            "y": 636,
+            "width": 261,
+            "height": 267
+          },
+          "mirrorX": false,
+          "perspectiveScale": 1
+        },
+        "nearLeg": {
+          "rect": {
+            "x": 697,
+            "y": 673,
+            "width": 209,
+            "height": 236
+          },
+          "pivot": {
+            "x": 0.45,
+            "y": 0.2
+          },
+          "suggestedWidth": 16,
+          "solidBounds": {
+            "x": 705,
+            "y": 681,
+            "width": 193,
+            "height": 220
+          }
+        },
+        "farLeg": {
+          "rect": {
+            "x": 1211,
+            "y": 708,
+            "width": 187,
+            "height": 194
+          },
+          "pivot": {
+            "x": 0.44,
+            "y": 0.2
+          },
+          "suggestedWidth": 14,
+          "solidBounds": {
+            "x": 1219,
+            "y": 716,
+            "width": 171,
+            "height": 178
+          }
+        }
+      },
+      "joints": {
+        "head": {
+          "x": 0.6457846153846153,
+          "y": 0.16
+        },
+        "nearArm": {
+          "x": 0.42,
+          "y": 0.34
+        },
+        "farArm": {
+          "x": 0.84,
+          "y": 0.3
+        },
+        "nearLeg": {
+          "x": 0.55,
+          "y": 0.86
+        },
+        "farLeg": {
+          "x": 0.78,
+          "y": 0.86
+        }
+      },
+      "notes": [
+        "Torso blue feather side patch resembles a folded wing; inspect the raised-wing pose before acceptance.",
+        "Generated interiors reach alpha254, not requested alpha255; no postprocessing applied.",
+        "No blink or eyelid variant included."
+      ]
+    }
+  }
+}

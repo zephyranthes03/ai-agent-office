@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "purpose": "Private visual prototype furniture/source rectangles; not room pack schema",
+  "image": "./assets-space/furnishings-v1.png",
+  "shell": "./assets-space/room-shell-v1.png",
+  "shellSize": [
+    1774,
+    887
+  ],
+  "frames": {
+    "window": {
+      "x": 22,
+      "y": 153,
+      "width": 511,
+      "height": 309
+    },
+    "desk": {
+      "x": 542,
+      "y": 184,
+      "width": 521,
+      "height": 268
+    },
+    "sofa": {
+      "x": 1074,
+      "y": 219,
+      "width": 443,
+      "height": 283
+    },
+    "coffee": {
+      "x": 22,
+      "y": 668,
+      "width": 609,
+      "height": 271
+    },
+    "plant": {
+      "x": 653,
+      "y": 541,
+      "width": 364,
+      "height": 402
+    },
+    "shelf": {
+      "x": 1109,
+      "y": 544,
+      "width": 366,
+      "height": 403
+    }
+  }
+}

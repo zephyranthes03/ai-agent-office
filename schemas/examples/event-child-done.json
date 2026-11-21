@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "agent": "claude-code",
+  "session": "s1/a1",
+  "parent": "s1",
+  "project": "ai-pii",
+  "state": "done",
+  "lifecycle": "ended",
+  "result": { "outcome": "completed", "at": "2026-10-19T12:31:00Z" },
+  "detail": null,
+  "ts": "2026-10-19T12:31:00Z"
+}

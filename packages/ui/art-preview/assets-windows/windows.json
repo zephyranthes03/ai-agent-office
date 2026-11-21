@@ -1,0 +1,26 @@
+{
+ "oak": {
+  "image": "oak-v1.png",
+  "rect": {
+   "x": 64,
+   "y": 101,
+   "width": 1647,
+   "height": 683
+  },
+  "sill": [
+   [
+    260,
+    701
+   ],
+   [
+    887,
+    701
+   ],
+   [
+    1510,
+    701
+   ]
+  ]
+ },
+ "note": "Only the oak horizontal draft (the owner's choice) is copied; the study keeps metal and curve variants in assets-windows/windows.json."
+}

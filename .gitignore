@@ -1,0 +1,33 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node (planned stack, see docs/decisions/0001-tech-stack.md)
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# Local runtime data (never commit)
+*.sqlite
+*.sqlite-journal
+*.db
+spool/
+.env
+.env.*
+
+# Agent / tool state
+.omc/
+.claude/settings.local.json
+
+# Art production working folder (generated references, see docs/decisions/0026-human-cast-and-character-art.md)
+output/
+
+# Playwright output
+test-results/
+playwright-report/
+.playwright-mcp/

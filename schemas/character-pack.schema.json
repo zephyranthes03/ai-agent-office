@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:agent-office:schema:character-pack:1",
+  "title": "Character pack manifest v1 (manifest.json)",
+  "description": "One pack = one character of a species; several packs may declare the same species and the engine picks one per session from the session id. Sprites come from an Aseprite sheet export (PNG + JSON with frame tags); this manifest maps required animation names to tags and declares metadata and license. Unknown fields are ignored.",
+  "type": "object",
+  "required": ["schema_version", "id", "name", "version", "license", "species", "sheet", "aseprite_json", "animations"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+    "name": { "type": "string", "maxLength": 64 },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "authors": { "type": "array", "items": { "type": "string", "maxLength": 128 } },
+    "homepage": { "type": "string", "format": "uri" },
+    "license": {
+      "description": "REQUIRED. SPDX identifier or an object for custom terms. Packs without a license are refused at load time.",
+      "oneOf": [
+        { "type": "string", "minLength": 1, "maxLength": 64 },
+        { "type": "object", "required": ["name", "url"], "properties": { "name": { "type": "string", "maxLength": 64 }, "url": { "type": "string", "format": "uri" }, "commercial_use": { "type": "boolean" } } }
+      ]
+    },
+    "species": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,31}$", "description": "Species id referenced by the config `species` mapping (e.g. cat)." },
+    "sheet": { "type": "string", "maxLength": 256, "description": "Relative path to the sprite sheet PNG." },
+    "aseprite_json": { "type": "string", "maxLength": 256, "description": "Relative path to the Aseprite export JSON (hash or array frames, with frameTags)." },
+    "frame_size": { "type": "object", "required": ["w", "h"], "properties": { "w": { "type": "integer", "minimum": 1 }, "h": { "type": "integer", "minimum": 1 } } },
+    "anchor": { "type": "object", "required": ["x", "y"], "properties": { "x": { "type": "number" }, "y": { "type": "number" } }, "description": "Feet point in frame pixels." },
+    "label_anchor": { "type": "object", "required": ["x", "y"], "properties": { "x": { "type": "number" }, "y": { "type": "number" } }, "description": "Where head labels attach." },
+    "animations": {
+      "type": "object",
+      "description": "Required tags map state animations to Aseprite frame tags (see docs/packs.md). Optional tags fall back to engine defaults. drink_coffee, read_book and stretch are lifestyle animations, not states: the engine may play them while the character is idle.",
+      "required": ["idle", "walk", "work", "wait_dependency", "wait_user", "error", "done"],
+      "properties": {
+        "idle": { "$ref": "#/$defs/anim" },
+        "walk": { "$ref": "#/$defs/anim" },
+        "work": { "$ref": "#/$defs/anim" },
+        "wait_dependency": { "$ref": "#/$defs/anim" },
+        "wait_user": { "$ref": "#/$defs/anim" },
+        "error": { "$ref": "#/$defs/anim", "description": "Played once, then the last frame is held." },
+        "done": { "$ref": "#/$defs/anim", "description": "Played once for done_hold_s." },
+        "paused": { "$ref": "#/$defs/anim" },
+        "cancelled": { "$ref": "#/$defs/anim" },
+        "unknown": { "$ref": "#/$defs/anim" },
+        "drink_coffee": { "$ref": "#/$defs/anim" },
+        "read_book": { "$ref": "#/$defs/anim" },
+        "stretch": { "$ref": "#/$defs/anim" }
+      }
+    },
+    "palettes": {
+      "type": "array",
+      "description": "Colour variants (colourways) used to tell individuals apart; chosen deterministically from the session id. Each swaps colours of the sheet as drawn (the default colourway has an empty swap).",
+      "items": { "type": "object", "required": ["id", "swap"], "properties": { "id": { "type": "string", "maxLength": 32 }, "name": { "type": "string", "maxLength": 64 }, "swap": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }, "description": "source hex → replacement hex" } } }
+    },
+    "props": {
+      "type": "array",
+      "items": { "type": "object", "required": ["id", "image"], "properties": { "id": { "type": "string", "maxLength": 32 }, "image": { "type": "string", "maxLength": 256 }, "anchor": { "type": "object", "properties": { "x": { "type": "number" }, "y": { "type": "number" } } }, "for": { "type": "array", "items": { "type": "string", "maxLength": 32 }, "description": "Optional role/entrypoint keys this prop decorates (e.g. reviewer, guardian, claude-desktop)." } } }
+    },
+    "original_work": { "type": "boolean", "description": "Must be true for bundled packs: original or commercially licensed art, no look-alikes of existing game characters." }
+  },
+  "$defs": {
+    "anim": {
+      "oneOf": [
+        { "type": "string", "maxLength": 64, "description": "Aseprite frame tag name." },
+        { "type": "object", "required": ["tag"], "properties": { "tag": { "type": "string", "maxLength": 64 }, "fps": { "type": "number", "minimum": 1, "maximum": 60 }, "loop": { "type": "boolean" }, "hold_last_frame": { "type": "boolean" } } }
+      ]
+    }
+  }
+}

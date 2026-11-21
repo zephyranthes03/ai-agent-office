@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "agent": "claude-code",
+  "session": "s1",
+  "parent": null,
+  "project": "ai-pii",
+  "cwd": "/home/user/dev/ai-pii",
+  "space": "office",
+  "state": "waiting_user",
+  "lifecycle": "active",
+  "waiting_on": { "reason": "approval", "target": "Bash: npm" },
+  "result": null,
+  "detail": "Bash: npm",
+  "origin": "human",
+  "tokens": { "in": 1200, "out": 340, "scope": "turn" },
+  "ts": "2026-10-19T12:30:00Z"
+}

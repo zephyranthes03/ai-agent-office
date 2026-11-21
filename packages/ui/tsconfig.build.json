@@ -1,0 +1,11 @@
+{
+  "$comment": "Emits the browser modules to dist/ (npm run build:ui). Preserve relative paths between UI and shared core modules for native browser imports.",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": false,
+    "sourceMap": false,
+    "rootDir": "..",
+    "outDir": "dist"
+  }
+}

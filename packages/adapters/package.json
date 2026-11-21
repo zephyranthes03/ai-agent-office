@@ -1,0 +1,17 @@
+{
+  "name": "@agent-office/adapters",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Per-agent descriptors and the pure hook-to-signal mappings for Claude Code and Codex.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "dependencies": {
+    "@agent-office/core": "0.0.0"
+  }
+}

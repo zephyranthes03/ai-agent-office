@@ -1,0 +1,21 @@
+{
+  "name": "@agent-office/daemon",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The local daemon: ingests hook envelopes and state reports on 127.0.0.1, runs the reducer, keeps state in SQLite and streams it to the UI.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "dependencies": {
+    "@agent-office/adapters": "0.0.0",
+    "@agent-office/core": "0.0.0",
+    "@agent-office/platform": "0.0.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

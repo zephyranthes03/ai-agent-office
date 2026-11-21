@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "purpose": "Private flow-life-v5 handheld interaction sprites; not a production character-pack manifest.",
+  "image": "props-v2.png",
+  "width": 1254,
+  "height": 1254,
+  "coordinateSystem": "Source PNG pixels; normalizedAnchors are relative to each padded rect.",
+  "cropPolicy": "Global alpha>=16 main connected component bounds plus 8 source pixels of padding; raw PNG bytes and alpha preserved. Do not crop fixed quadrants.",
+  "anchorPolicy": "Visual candidate source locations, checked to lie in the intended prop region; unverified until actual renderer/hand/mouth assembly. The cup handleHoleCenter is intentionally transparent.",
+  "suggestedWidthUnits": "Initial unverified renderer units where character height is 110. Runtime owns calibration.",
+  "frames": {
+    "cup": {
+      "rect": {
+        "x": 176,
+        "y": 232,
+        "width": 282,
+        "height": 240
+      },
+      "solidBounds": {
+        "x": 184,
+        "y": 240,
+        "width": 266,
+        "height": 224
+      },
+      "connectedAlphaPixels": 43778,
+      "anchors": {
+        "handle": {
+          "x": 202,
+          "y": 350
+        },
+        "handleHoleCenter": {
+          "x": 231,
+          "y": 353
+        },
+        "lip": {
+          "x": 258,
+          "y": 286
+        },
+        "frontLip": {
+          "x": 350,
+          "y": 313
+        },
+        "teaCenter": {
+          "x": 352,
+          "y": 285
+        },
+        "bodyCenter": {
+          "x": 352,
+          "y": 376
+        },
+        "handleLower": {
+          "x": 240,
+          "y": 410
+        }
+      },
+      "normalizedAnchors": {
+        "handle": {
+          "x": 0.092199,
+          "y": 0.491667
+        },
+        "handleHoleCenter": {
+          "x": 0.195035,
+          "y": 0.504167
+        },
+        "lip": {
+          "x": 0.29078,
+          "y": 0.225
+        },
+        "frontLip": {
+          "x": 0.617021,
+          "y": 0.3375
+        },
+        "teaCenter": {
+          "x": 0.624113,
+          "y": 0.220833
+        },
+        "bodyCenter": {
+          "x": 0.624113,
+          "y": 0.6
+        },
+        "handleLower": {
+          "x": 0.22695,
+          "y": 0.741667
+        }
+      },
+      "suggestedWidth": 22
+    },
+    "newspaper": {
+      "rect": {
+        "x": 745,
+        "y": 186,
+        "width": 383,
+        "height": 323
+      },
+      "solidBounds": {
+        "x": 753,
+        "y": 194,
+        "width": 367,
+        "height": 307
+      },
+      "connectedAlphaPixels": 93000,
+      "anchors": {
+        "leftGrip": {
+          "x": 854,
+          "y": 468
+        },
+        "rightGrip": {
+          "x": 1099,
+          "y": 440
+        },
+        "centerFold": {
+          "x": 934,
+          "y": 352
+        }
+      },
+      "normalizedAnchors": {
+        "leftGrip": {
+          "x": 0.284595,
+          "y": 0.873065
+        },
+        "rightGrip": {
+          "x": 0.924282,
+          "y": 0.786378
+        },
+        "centerFold": {
+          "x": 0.493473,
+          "y": 0.513932
+        }
+      },
+      "suggestedWidth": 58
+    },
+    "foldedPaper": {
+      "rect": {
+        "x": 139,
+        "y": 815,
+        "width": 401,
+        "height": 258
+      },
+      "solidBounds": {
+        "x": 147,
+        "y": 823,
+        "width": 385,
+        "height": 242
+      },
+      "connectedAlphaPixels": 61263,
+      "anchors": {
+        "leftGrip": {
+          "x": 175,
+          "y": 958
+        },
+        "rightGrip": {
+          "x": 509,
+          "y": 960
+        },
+        "center": {
+          "x": 340,
+          "y": 941
+        }
+      },
+      "normalizedAnchors": {
+        "leftGrip": {
+          "x": 0.089776,
+          "y": 0.554264
+        },
+        "rightGrip": {
+          "x": 0.922693,
+          "y": 0.562016
+        },
+        "center": {
+          "x": 0.501247,
+          "y": 0.488372
+        }
+      },
+      "suggestedWidth": 40
+    },
+    "notepad": {
+      "rect": {
+        "x": 730,
+        "y": 803,
+        "width": 415,
+        "height": 297
+      },
+      "solidBounds": {
+        "x": 738,
+        "y": 811,
+        "width": 399,
+        "height": 281
+      },
+      "connectedAlphaPixels": 77011,
+      "anchors": {
+        "leftGrip": {
+          "x": 784,
+          "y": 999
+        },
+        "rightGrip": {
+          "x": 1096,
+          "y": 1018
+        },
+        "centerFold": {
+          "x": 942,
+          "y": 944
+        },
+        "writingSurface": {
+          "x": 856,
+          "y": 967
+        }
+      },
+      "normalizedAnchors": {
+        "leftGrip": {
+          "x": 0.13012,
+          "y": 0.659933
+        },
+        "rightGrip": {
+          "x": 0.881928,
+          "y": 0.723906
+        },
+        "centerFold": {
+          "x": 0.510843,
+          "y": 0.474747
+        },
+        "writingSurface": {
+          "x": 0.3036144578313253,
+          "y": 0.5521885521885522
+        }
+      },
+      "suggestedWidth": 40
+    }
+  }
+}
